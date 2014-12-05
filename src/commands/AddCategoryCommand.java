@@ -34,8 +34,6 @@ public class AddCategoryCommand extends Command {
         newCategory.setName(name.getText());
         newCategory.setDescription(description.getText());
         newCategory.setParentcategory((Category) parent.getSelectedItem());
-        
-        
-    }
-    
+
+    }  
 }
