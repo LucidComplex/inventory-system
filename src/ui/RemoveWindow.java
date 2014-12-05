@@ -7,7 +7,11 @@ package ui;
 
 import base.UI;
 import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import statics.Executor;
 
 /**
@@ -121,13 +125,18 @@ public class RemoveWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_buttonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Executor.execute("removeItem");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(RemoveWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
+        new MainWindow().setVisible(true);
     }//GEN-LAST:event_remove_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
+        new MainWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     /**
@@ -177,6 +186,9 @@ public class RemoveWindow extends UI {
 
     @Override
     public Map getFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map fields = new HashMap();
+        fields.put(quantity_field.getName(), quantity_field);
+        fields.put(removeItem_combo.getName(), removeItem_combo);
+        return fields;
     }
 }

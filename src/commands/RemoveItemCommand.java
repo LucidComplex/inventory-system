@@ -16,6 +16,7 @@ public class RemoveItemCommand extends Command {
     
     public RemoveItemCommand(UI ui){
         elements = ui;
+        fields = elements.getFields();
     }
 
     @Override
