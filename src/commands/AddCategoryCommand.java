@@ -28,7 +28,7 @@ public class AddCategoryCommand extends Command {
         Category newCategory = ModelFactory.createCategory();
         
         JTextField name = (JTextField) fields.get("categoryName_field");
-        JTextField description = (JTextField) fields.get("categoryDescription_field");
+        JTextArea description = (JTextArea) fields.get("categoryDescription_textarea");
         JComboBox parent = (JComboBox) fields.get("parentCategory_combo");
         
         newCategory.setName(name.getText());
