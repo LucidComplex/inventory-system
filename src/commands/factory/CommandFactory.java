@@ -77,4 +77,31 @@ public class CommandFactory {
     public static Command createRequestCommand(UI ui){
         return new RequestCommand(ui);
     }
+
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that creates an edit item command.
+     */
+    public static Command createEditItemCommand(UI ui) {
+        return new EditItemCommand(ui);
+    }
+
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that creates an edit category command.
+     */
+    public static Command createEditCategoryCommand(UI ui) {
+        return new EditCategoryCommand(ui);
+    }
+
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that creates an edit supplier command.
+     */
+    public static Command createEditSupplierCommand(UI ui) {
+        return new EditSupplierCommand(ui);
+    }
 }

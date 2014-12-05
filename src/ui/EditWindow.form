@@ -89,12 +89,18 @@
             <Property name="text" type="java.lang.String" value="Edit Item"/>
             <Property name="name" type="java.lang.String" value="editItem_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editItem_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="editCategory_button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit Category"/>
             <Property name="name" type="java.lang.String" value="editCategory_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCategory_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ok_button">
           <Properties>

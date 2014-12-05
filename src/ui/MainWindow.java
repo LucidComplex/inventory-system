@@ -206,21 +206,23 @@ public class MainWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
-        UI addWindow = new AddWindow();
-        addWindow.setVisible(true);
+        new AddWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_buttonActionPerformed
         new EditWindow().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_edit_buttonActionPerformed
 
     private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_buttonActionPerformed
         new RemoveWindow().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_remove_buttonActionPerformed
 
     private void request_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_buttonActionPerformed
         new RequestWindow().setVisible(true);        
+        this.dispose();
     }//GEN-LAST:event_request_buttonActionPerformed
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_buttonActionPerformed

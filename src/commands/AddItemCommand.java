@@ -41,8 +41,6 @@ public class AddItemCommand extends Command {
         item.setSupplier((Supplier)supplier.getSelectedItem());
 
         item.commit();
-        Database.refreshDatabase();
-              
     }
     
 }

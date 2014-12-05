@@ -52,6 +52,20 @@ public class Database {
     public static List<Department> getDepartmentList() {
         return departmentList;
     }
+
+    /**
+     * @return the requestList
+     */
+    public static List<PurchaseRequest> getRequestList() {
+        return requestList;
+    }
+
+    /**
+     * @param aRequestList the requestList to set
+     */
+    public static void setRequestList(List<PurchaseRequest> aRequestList) {
+        requestList = aRequestList;
+    }
     
     public Database(){
         createConnection();

@@ -7,26 +7,22 @@ package commands;
 
 import base.Command;
 import base.UI;
+import exceptions.ExecutorException;
 
 /**
  *
  * @author tan
  */
-public class RemoveItemCommand extends Command {
-    
-    public RemoveItemCommand(UI ui){
+public class EditSupplierCommand extends Command {
+
+    public EditSupplierCommand(UI ui){
         elements = ui;
         fields = elements.getFields();
     }
-
+    
     @Override
-    public void execute() {
-        /*
+    public void execute() throws ExecutorException {
         
-        
-        */
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
