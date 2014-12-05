@@ -44,6 +44,7 @@ public class MainWindow extends UI {
         request_button = new javax.swing.JButton();
         exit_button = new javax.swing.JButton();
         search_button = new javax.swing.JButton();
+        viewRequests_button = new javax.swing.JButton();
         list_panel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
@@ -101,6 +102,14 @@ public class MainWindow extends UI {
             }
         });
 
+        viewRequests_button.setText("View Requests");
+        viewRequests_button.setName("viewRequests_button"); // NOI18N
+        viewRequests_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewRequests_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttons_panelLayout = new javax.swing.GroupLayout(buttons_panel);
         buttons_panel.setLayout(buttons_panelLayout);
         buttons_panelLayout.setHorizontalGroup(
@@ -121,7 +130,8 @@ public class MainWindow extends UI {
                     .addComponent(edit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(remove_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(request_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewRequests_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buttons_panelLayout.setVerticalGroup(
@@ -141,7 +151,9 @@ public class MainWindow extends UI {
                 .addComponent(remove_button)
                 .addGap(18, 18, 18)
                 .addComponent(edit_button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(viewRequests_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(exit_button)
                 .addGap(20, 20, 20))
         );
@@ -235,6 +247,10 @@ public class MainWindow extends UI {
         //Create a performSearch method that searches the item using the variable text
     }//GEN-LAST:event_search_buttonActionPerformed
 
+    private void viewRequests_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequests_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewRequests_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +300,7 @@ public class MainWindow extends UI {
     private javax.swing.JTextField search_field;
     private javax.swing.JLabel search_label;
     private javax.swing.JLabel table_label;
+    private javax.swing.JButton viewRequests_button;
     // End of variables declaration//GEN-END:variables
 
     @Override
