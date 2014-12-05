@@ -31,6 +31,7 @@ public class NewItemWindow extends UI {
     public NewItemWindow() {
         initComponents();
         Executor.put("addNewItem", CommandFactory.createAddItemCommand(this));
+        
     }
 
     /**
