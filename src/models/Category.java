@@ -96,7 +96,7 @@ public class Category extends Commitable implements Serializable {
     /**
      * @param category the parentCategory to set
      */
-    public void setSubcategory(Category category) {
+    public void setParentcategory(Category category) {
         this.parentCategory = category;
     }
     
