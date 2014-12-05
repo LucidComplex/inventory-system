@@ -11,7 +11,9 @@ import commands.factory.CommandFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import models.Category;
 import models.Item;
+import models.Supplier;
 import statics.Executor;
 
 /**
@@ -124,10 +126,18 @@ public class EditItemWindow extends UI {
             }
         });
 
-        itemSupplier_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Supplier> supplierList = Database.getSupplierList();
+        itemSupplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        itemSupplier_combo.addItem(new String("--- SELECT ITEM ---"));
+        for(Supplier s : supplierList)
+        itemSupplier_combo.addItem(s);
         itemSupplier_combo.setName("itemSupplier_combo"); // NOI18N
 
-        itemCategory_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Category> categoryList = Database.getCategoryList();
+        itemCategory_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        itemCategory_combo.addItem(new String("--- SELECT CATEGORY ---"));
+        for(Category c : categoryList)
+        itemCategory_combo.addItem(c);
         itemCategory_combo.setName("itemCategory_combo"); // NOI18N
 
         javax.swing.GroupLayout editItem_panelLayout = new javax.swing.GroupLayout(editItem_panel);
@@ -212,7 +222,6 @@ public class EditItemWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemName_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemName_radiobuttonActionPerformed
-        // TODO add your handling code here:]
         if(itemName_radiobutton.isSelected())
             itemName_field.setEnabled(true);
         else itemName_field.setEnabled(false);

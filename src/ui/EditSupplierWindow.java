@@ -60,6 +60,10 @@ public class EditSupplierWindow extends UI {
         zipcode_field = new javax.swing.JTextField();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        contact_radiobutton = new javax.swing.JRadioButton();
+        contact_field = new javax.swing.JTextField();
+        email_radiobutton = new javax.swing.JRadioButton();
+        email_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edit Supplier");
@@ -160,6 +164,28 @@ public class EditSupplierWindow extends UI {
             }
         });
 
+        contact_radiobutton.setText("Edit Contact:");
+        contact_radiobutton.setName("contact_radiobutton"); // NOI18N
+        contact_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contact_radiobuttonActionPerformed(evt);
+            }
+        });
+
+        contact_field.setEnabled(false);
+        contact_field.setName("contact_field"); // NOI18N
+
+        email_radiobutton.setText("Edit Email:");
+        email_radiobutton.setName("email_radiobutton"); // NOI18N
+        email_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                email_radiobuttonActionPerformed(evt);
+            }
+        });
+
+        email_field.setEnabled(false);
+        email_field.setName("email_field"); // NOI18N
+
         javax.swing.GroupLayout editSupplier_panelLayout = new javax.swing.GroupLayout(editSupplier_panel);
         editSupplier_panel.setLayout(editSupplier_panelLayout);
         editSupplier_panelLayout.setHorizontalGroup(
@@ -180,7 +206,9 @@ public class EditSupplierWindow extends UI {
                             .addComponent(city_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(country_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(zipcode_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(province_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(province_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contact_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email_radiobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(editSupplier_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(street_field)
@@ -188,7 +216,9 @@ public class EditSupplierWindow extends UI {
                             .addComponent(city_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(country_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                             .addComponent(province_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                            .addComponent(zipcode_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))))
+                            .addComponent(zipcode_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(contact_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(email_field, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))))
                 .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editSupplier_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -230,11 +260,19 @@ public class EditSupplierWindow extends UI {
                 .addGroup(editSupplier_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(zipcode_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(zipcode_radiobutton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(editSupplier_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contact_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contact_radiobutton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(editSupplier_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(email_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email_radiobutton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(editSupplier_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save_button)
                     .addComponent(cancel_button))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,7 +283,7 @@ public class EditSupplierWindow extends UI {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editSupplier_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(editSupplier_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -317,8 +355,17 @@ public class EditSupplierWindow extends UI {
         province_field.setText(supplierAddress.getProvince());
         street_field.setText(supplierAddress.getStreet());
         zipcode_field.setText(supplierAddress.getZipcode());
-        // TODO
+        contact_field.setText(supplierContact.getNumber());
+        email_field.setText(supplierContact.getEmail());
     }//GEN-LAST:event_supplier_comboItemStateChanged
+
+    private void contact_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contact_radiobuttonActionPerformed
+        
+    }//GEN-LAST:event_contact_radiobuttonActionPerformed
+
+    private void email_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_radiobuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_email_radiobuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,11 +406,15 @@ public class EditSupplierWindow extends UI {
     private javax.swing.JButton cancel_button;
     private javax.swing.JTextField city_field;
     private javax.swing.JRadioButton city_radiobutton;
+    private javax.swing.JTextField contact_field;
+    private javax.swing.JRadioButton contact_radiobutton;
     private javax.swing.JTextField country_field;
     private javax.swing.JRadioButton country_radiobutton;
     private javax.swing.JLabel editSupplier_label;
     private javax.swing.JLabel editSupplier_label1;
     private javax.swing.JPanel editSupplier_panel;
+    private javax.swing.JTextField email_field;
+    private javax.swing.JRadioButton email_radiobutton;
     private javax.swing.JTextField name_field;
     private javax.swing.JRadioButton name_radiobutton;
     private javax.swing.JTextField province_field;
