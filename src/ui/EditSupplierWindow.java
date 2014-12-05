@@ -360,11 +360,15 @@ public class EditSupplierWindow extends UI {
     }//GEN-LAST:event_supplier_comboItemStateChanged
 
     private void contact_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contact_radiobuttonActionPerformed
-        
+        if(contact_radiobutton.isSelected())
+            contact_field.setEnabled(true);
+        else contact_field.setEnabled(false);
     }//GEN-LAST:event_contact_radiobuttonActionPerformed
 
     private void email_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_radiobuttonActionPerformed
-        // TODO add your handling code here:
+        if(email_radiobutton.isSelected())
+            email_field.setEnabled(true);
+        else email_field.setEnabled(false);
     }//GEN-LAST:event_email_radiobuttonActionPerformed
 
     /**

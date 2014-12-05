@@ -23,7 +23,7 @@ public class CommandFactory {
     public static Command createLoginCommand(UI ui){
         return new LoginCommand(ui);
     }
-    
+
     /**
      * 
      * @param ui the UI object to bound this command with.
