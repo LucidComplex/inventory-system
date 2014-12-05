@@ -8,7 +8,7 @@ package commands;
 import base.Command;
 import base.UI;
 import exceptions.ExecutorException;
-import javax.swing.JTextField;
+import javax.swing.*;
 import models.Category;
 import models.factory.ModelFactory;
 
@@ -29,9 +29,11 @@ public class AddCategoryCommand extends Command {
         
         JTextField name = (JTextField) fields.get("categoryName_field");
         JTextField description = (JTextField) fields.get("categoryDescription_field");
+        JComboBox parent = (JComboBox) fields.get("parentCategory_combo");
         
         newCategory.setName(name.getText());
         newCategory.setDescription(description.getText());
+        newCategory.setParentcategory((Category) parent.getSelectedItem());
         
         
     }
