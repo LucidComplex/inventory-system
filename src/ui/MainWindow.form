@@ -65,6 +65,7 @@
                       <Component id="remove_button" min="-2" pref="127" max="-2" attributes="0"/>
                       <Component id="request_button" min="-2" pref="127" max="-2" attributes="0"/>
                       <Component id="add_button" min="-2" pref="127" max="-2" attributes="0"/>
+                      <Component id="viewRequests_button" min="-2" pref="127" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -88,7 +89,9 @@
                   <Component id="remove_button" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="edit_button" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="132" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="viewRequests_button" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="91" max="32767" attributes="0"/>
                   <Component id="exit_button" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -156,6 +159,15 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="search_buttonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="viewRequests_button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="View Requests"/>
+            <Property name="name" type="java.lang.String" value="viewRequests_button" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewRequests_buttonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
