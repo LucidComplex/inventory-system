@@ -6,7 +6,13 @@
 package ui;
 
 import base.UI;
+import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import statics.Executor;
 
 /**
  *
@@ -19,6 +25,9 @@ public class EditWindow extends UI {
      */
     public EditWindow() {
         initComponents();
+        Executor.put("editItem", CommandFactory.createEditItemCommand(this));
+        Executor.put("editCategory", CommandFactory.createEditCategoryCommand(this));
+        Executor.put("editSupplier", CommandFactory.createEditSupplierCommand(this));
     }
 
     /**
@@ -41,12 +50,27 @@ public class EditWindow extends UI {
 
         editSupplier_button.setText("Edit Supplier");
         editSupplier_button.setName("editSupplier_button"); // NOI18N
+        editSupplier_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSupplier_buttonActionPerformed(evt);
+            }
+        });
 
         editItem_button.setText("Edit Item");
         editItem_button.setName("editItem_button"); // NOI18N
+        editItem_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editItem_buttonActionPerformed(evt);
+            }
+        });
 
         editCategory_button.setText("Edit Category");
         editCategory_button.setName("editCategory_button"); // NOI18N
+        editCategory_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCategory_buttonActionPerformed(evt);
+            }
+        });
 
         ok_button.setText("OK");
         ok_button.setName("ok_button"); // NOI18N
@@ -96,6 +120,36 @@ public class EditWindow extends UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
+        try {
+            Executor.execute("editSupplier");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+        new EditSupplierWindow().setVisible(true);
+    }//GEN-LAST:event_editSupplier_buttonActionPerformed
+
+    private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed
+        try {
+            Executor.execute("editItem");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+        new EditItemWindow().setVisible(true);
+    }//GEN-LAST:event_editItem_buttonActionPerformed
+
+    private void editCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCategory_buttonActionPerformed
+        try {
+            Executor.execute("editCategory");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+        new EditCategoryWindow().setVisible(true);
+    }//GEN-LAST:event_editCategory_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,6 +195,7 @@ public class EditWindow extends UI {
 
     @Override
     public Map getFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map fields = new HashMap();
+        return fields;
     }
 }
