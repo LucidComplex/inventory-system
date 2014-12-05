@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="editSupplier_panel" min="-2" max="-2" attributes="0"/>
+          <Component id="editSupplier_panel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -58,6 +58,8 @@
                               <Component id="country_radiobutton" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="zipcode_radiobutton" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="province_radiobutton" min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="contact_radiobutton" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="email_radiobutton" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -67,6 +69,8 @@
                               <Component id="country_field" pref="227" max="32767" attributes="0"/>
                               <Component id="province_field" pref="227" max="32767" attributes="0"/>
                               <Component id="zipcode_field" pref="227" max="32767" attributes="0"/>
+                              <Component id="contact_field" pref="227" max="32767" attributes="0"/>
+                              <Component id="email_field" pref="227" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -121,12 +125,22 @@
                       <Component id="zipcode_field" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="zipcode_radiobutton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="contact_field" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="contact_radiobutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="email_field" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="email_radiobutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="save_button" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cancel_button" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -258,6 +272,36 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancel_buttonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="contact_radiobutton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit Contact:"/>
+            <Property name="name" type="java.lang.String" value="contact_radiobutton" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contact_radiobuttonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="contact_field">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="contact_field" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="email_radiobutton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit Email:"/>
+            <Property name="name" type="java.lang.String" value="email_radiobutton" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="email_radiobuttonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="email_field">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="name" type="java.lang.String" value="email_field" noResource="true"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
