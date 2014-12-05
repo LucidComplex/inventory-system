@@ -149,7 +149,6 @@ public class EditWindow extends UI {
         this.dispose();
         new EditCategoryWindow().setVisible(true);
     }//GEN-LAST:event_editCategory_buttonActionPerformed
-
     /**
      * @param args the command line arguments
      */
