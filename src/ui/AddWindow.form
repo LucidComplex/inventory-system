@@ -146,6 +146,9 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="quantity_field" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="AddWindow_quantity_field"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

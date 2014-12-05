@@ -7,6 +7,11 @@ package commands;
 
 import base.Command;
 import base.UI;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import models.Item;
+import models.PurchaseRequest;
+import models.factory.ModelFactory;
 
 /**
  *
@@ -21,7 +26,13 @@ public class RequestCommand extends Command {
 
     @Override
     public void execute() {
+        JComboBox item =  (JComboBox) fields.get("requestItem_combo");
+        JSpinner quantity = (JSpinner) fields.get("quantity_spinner");
+        PurchaseRequest request = ModelFactory.createRequest();
         
+        request.setRequestedItem((Item) item.getSelectedItem());
+        request.setRequestedQuantity((int) quantity.getValue());
+        request.commit();
     }
     
 }

@@ -14,8 +14,6 @@ import javax.swing.JFrame;
  * @author MiriamMarie
  */
 public class EditWindow extends UI {
-    JFrame item = new EditItemWindow();
-    JFrame supplier = new EditSupplierWindow();
     
     /**
      * Creates new form EditWindow
@@ -36,8 +34,7 @@ public class EditWindow extends UI {
         jPanel1 = new javax.swing.JPanel();
         editItem_button = new javax.swing.JButton();
         editSupplier_button = new javax.swing.JButton();
-        save_button = new javax.swing.JButton();
-        cancel_button = new javax.swing.JButton();
+        ok_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edit");
@@ -60,17 +57,10 @@ public class EditWindow extends UI {
             }
         });
 
-        save_button.setText("Save");
-        save_button.addActionListener(new java.awt.event.ActionListener() {
+        ok_button.setText("OK");
+        ok_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_buttonActionPerformed(evt);
-            }
-        });
-
-        cancel_button.setText("Cancel");
-        cancel_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancel_buttonActionPerformed(evt);
+                ok_buttonActionPerformed(evt);
             }
         });
 
@@ -81,15 +71,13 @@ public class EditWindow extends UI {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(editItem_button, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(editSupplier_button, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(28, 28, 28))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cancel_button)
-                .addGap(25, 25, 25))
+                .addComponent(ok_button, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,9 +87,7 @@ public class EditWindow extends UI {
                     .addComponent(editItem_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editSupplier_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel_button)
-                    .addComponent(save_button))
+                .addComponent(ok_button)
                 .addContainerGap())
         );
 
@@ -119,24 +105,19 @@ public class EditWindow extends UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        // TODO add your handling code here:
+    private void ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_buttonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_cancel_buttonActionPerformed
-
-    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_save_buttonActionPerformed
+        new MainWindow().setVisible(true);
+    }//GEN-LAST:event_ok_buttonActionPerformed
 
     private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed
-        // TODO add your handling code here:
-        item.show();
+        this.dispose();
+        new EditItemWindow().setVisible(true);
     }//GEN-LAST:event_editItem_buttonActionPerformed
 
     private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
-        // TODO add your handling code here:
-        supplier.show();
+        this.dispose();
+        new EditSupplierWindow().setVisible(true);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     /**
@@ -175,11 +156,10 @@ public class EditWindow extends UI {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancel_button;
     private javax.swing.JButton editItem_button;
     private javax.swing.JButton editSupplier_button;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton save_button;
+    private javax.swing.JButton ok_button;
     // End of variables declaration//GEN-END:variables
 
     @Override

@@ -10,6 +10,7 @@ import models.Category;
 import models.Contact;
 import models.Item;
 import models.Monkey;
+import models.PurchaseRequest;
 import models.Supplier;
 
 /**
@@ -63,5 +64,13 @@ public class ModelFactory {
      */
     public static Contact createContact() {
         return new Contact();
+    }
+    
+    /**
+     * 
+     * @return a new PurchaseRequest object
+     */
+    public static PurchaseRequest createRequest(){
+        return new PurchaseRequest();
     }
 }
