@@ -139,11 +139,14 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="supplier_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="for(Supplier s : supplierList)&#xa;    supplier_combo.addItem(s);">
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="supplier_combo.addItem(new String(&quot;--- SELECT CATEGORY ---&quot;));&#xa;for(Supplier s : supplierList)&#xa;    supplier_combo.addItem(s);">
               <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="supplier_combo" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="supplier_comboItemStateChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Supplier&gt; supplierList = Database.getSupplierList();"/>
           </AuxValues>

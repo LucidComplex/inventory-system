@@ -7,10 +7,14 @@ package ui;
 
 import base.Database;
 import base.UI;
+import commands.factory.CommandFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import models.Address;
+import models.Contact;
 import models.Supplier;
+import statics.Executor;
 
 /**
  *
@@ -23,6 +27,7 @@ public class EditSupplierWindow extends UI {
      */
     public EditSupplierWindow() {
         initComponents();
+        Executor.put("editSupplier", CommandFactory.createAddSupplierCommand(this));
     }
 
     /**
@@ -60,9 +65,15 @@ public class EditSupplierWindow extends UI {
 
         List<Supplier> supplierList = Database.getSupplierList();
         supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        supplier_combo.addItem(new String("--- SELECT CATEGORY ---"));
         for(Supplier s : supplierList)
         supplier_combo.addItem(s);
         supplier_combo.setName("supplier_combo"); // NOI18N
+        supplier_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                supplier_comboItemStateChanged(evt);
+            }
+        });
 
         name_radiobutton.setText("Edit Supplier Name:");
         name_radiobutton.setName("name_radiobutton"); // NOI18N
@@ -276,18 +287,34 @@ public class EditSupplierWindow extends UI {
     }//GEN-LAST:event_city_radiobuttonActionPerformed
 
     private void country_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_country_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(country_radiobutton.isSelected())
             country_field.setEnabled(true);
         else country_field.setEnabled(false);
     }//GEN-LAST:event_country_radiobuttonActionPerformed
 
     private void zipcode_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipcode_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(zipcode_radiobutton.isSelected())
             zipcode_field.setEnabled(true);
         else zipcode_field.setEnabled(false);
     }//GEN-LAST:event_zipcode_radiobuttonActionPerformed
+
+    private void supplier_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_supplier_comboItemStateChanged
+        Object selectedObject = supplier_combo.getSelectedItem();
+        if(selectedObject instanceof String)
+            return;
+        
+        Supplier selectedSupplier = (Supplier) selectedObject;
+        Address supplierAddress = selectedSupplier.getAddress();
+        Contact supplierContact = selectedSupplier.getContact();
+        
+        city_field.setText(supplierAddress.getCity());
+        country_field.setText(supplierAddress.getCountry());
+        name_field.setText(selectedSupplier.getName());
+        province_field.setText(supplierAddress.getProvince());
+        street_field.setText(supplierAddress.getStreet());
+        zipcode_field.setText(supplierAddress.getZipcode());
+        // TODO
+    }//GEN-LAST:event_supplier_comboItemStateChanged
 
     /**
      * @param args the command line arguments

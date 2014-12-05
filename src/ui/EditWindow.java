@@ -25,9 +25,6 @@ public class EditWindow extends UI {
      */
     public EditWindow() {
         initComponents();
-        Executor.put("editItem", CommandFactory.createEditItemCommand(this));
-        Executor.put("editCategory", CommandFactory.createEditCategoryCommand(this));
-        Executor.put("editSupplier", CommandFactory.createEditSupplierCommand(this));
     }
 
     /**
@@ -74,6 +71,11 @@ public class EditWindow extends UI {
 
         ok_button.setText("OK");
         ok_button.setName("ok_button"); // NOI18N
+        ok_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ok_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editWindow_panelLayout = new javax.swing.GroupLayout(editWindow_panel);
         editWindow_panel.setLayout(editWindow_panelLayout);
@@ -121,34 +123,24 @@ public class EditWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
-        try {
-            Executor.execute("editSupplier");
-        } catch (ExecutorException ex) {
-            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
         this.dispose();
         new EditSupplierWindow().setVisible(true);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed
-        try {
-            Executor.execute("editItem");
-        } catch (ExecutorException ex) {
-            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
         this.dispose();
         new EditItemWindow().setVisible(true);
     }//GEN-LAST:event_editItem_buttonActionPerformed
 
     private void editCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCategory_buttonActionPerformed
-        try {
-            Executor.execute("editCategory");
-        } catch (ExecutorException ex) {
-            Logger.getLogger(EditWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
         this.dispose();
         new EditCategoryWindow().setVisible(true);
     }//GEN-LAST:event_editCategory_buttonActionPerformed
+
+    private void ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_buttonActionPerformed
+        new MainWindow().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ok_buttonActionPerformed
     /**
      * @param args the command line arguments
      */
