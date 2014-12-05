@@ -7,10 +7,12 @@ package ui;
 
 import base.Database;
 import base.UI;
+import commands.factory.CommandFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import models.Item;
+import statics.Executor;
 
 /**
  *
@@ -23,6 +25,7 @@ public class EditItemWindow extends UI {
      */
     public EditItemWindow() {
         initComponents();
+        Executor.put("editItem", CommandFactory.createEditItemCommand(this));
     }
 
     /**

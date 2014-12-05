@@ -8,9 +8,12 @@ package ui;
 import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Address;
 import models.Contact;
 import models.Supplier;
@@ -249,38 +252,39 @@ public class EditSupplierWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void province_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_province_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(province_radiobutton.isSelected())
             province_field.setEnabled(true);
         else province_field.setEnabled(false);
     }//GEN-LAST:event_province_radiobuttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Executor.execute("editSupplier");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(EditSupplierWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        new EditWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_save_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        // TODO add your handling code here:
+        new EditWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void name_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(name_radiobutton.isSelected())
             name_field.setEnabled(true);
         else name_field.setEnabled(false);
     }//GEN-LAST:event_name_radiobuttonActionPerformed
 
     private void street_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_street_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(street_radiobutton.isSelected())
             street_field.setEnabled(true);
         else street_field.setEnabled(false);
     }//GEN-LAST:event_street_radiobuttonActionPerformed
 
     private void city_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_city_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(city_radiobutton.isSelected())
             city_field.setEnabled(true);
         else city_field.setEnabled(false);
