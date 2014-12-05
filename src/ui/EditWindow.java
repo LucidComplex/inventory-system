@@ -41,6 +41,11 @@ public class EditWindow extends UI {
 
         editSupplier_button.setText("Edit Supplier");
         editSupplier_button.setName("editSupplier_button"); // NOI18N
+        editSupplier_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSupplier_buttonActionPerformed(evt);
+            }
+        });
 
         editItem_button.setText("Edit Item");
         editItem_button.setName("editItem_button"); // NOI18N
@@ -95,6 +100,10 @@ public class EditWindow extends UI {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     /**
      * @param args the command line arguments

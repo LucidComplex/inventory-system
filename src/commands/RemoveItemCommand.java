@@ -16,10 +16,16 @@ public class RemoveItemCommand extends Command {
     
     public RemoveItemCommand(UI ui){
         elements = ui;
+        
     }
 
     @Override
     public void execute() {
+        /*
+        
+        
+        */
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
