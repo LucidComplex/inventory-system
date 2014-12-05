@@ -44,6 +44,10 @@ public class EditItemWindow extends UI {
         itemDescription_field = new javax.swing.JTextArea();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        itemSupplier_radiobutton = new javax.swing.JRadioButton();
+        itemCategory_radiobutton = new javax.swing.JRadioButton();
+        itemSupplier_combo = new javax.swing.JComboBox();
+        itemCategory_combo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edit Item");
@@ -101,32 +105,62 @@ public class EditItemWindow extends UI {
             }
         });
 
+        itemSupplier_radiobutton.setText("Edit Supplier:");
+        itemSupplier_radiobutton.setName("itemSupplier_radiobutton"); // NOI18N
+        itemSupplier_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSupplier_radiobuttonActionPerformed(evt);
+            }
+        });
+
+        itemCategory_radiobutton.setText("Edit Category:");
+        itemCategory_radiobutton.setName("itemCategory_radiobutton"); // NOI18N
+        itemCategory_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCategory_radiobuttonActionPerformed(evt);
+            }
+        });
+
+        itemSupplier_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        itemSupplier_combo.setName("itemSupplier_combo"); // NOI18N
+
+        itemCategory_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        itemCategory_combo.setName("itemCategory_combo"); // NOI18N
+
         javax.swing.GroupLayout editItem_panelLayout = new javax.swing.GroupLayout(editItem_panel);
         editItem_panel.setLayout(editItem_panelLayout);
         editItem_panelLayout.setHorizontalGroup(
             editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editItem_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editItem_panelLayout.createSequentialGroup()
-                        .addComponent(itemDescription_radiobutton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(description_scollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(editItem_panelLayout.createSequentialGroup()
                         .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(item_label)
                             .addComponent(itemName_radiobutton))
                         .addGap(20, 20, 20)
+                        .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(itemName_field)
+                            .addComponent(itemName_combo, 0, 208, Short.MAX_VALUE)))
+                    .addGroup(editItem_panelLayout.createSequentialGroup()
+                        .addComponent(itemDescription_radiobutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(itemName_field, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemName_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editItem_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancel_button, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                            .addComponent(description_scollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editItem_panelLayout.createSequentialGroup()
+                                .addComponent(save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cancel_button, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))))
+                    .addGroup(editItem_panelLayout.createSequentialGroup()
+                        .addComponent(itemSupplier_radiobutton)
+                        .addGap(34, 34, 34)
+                        .addComponent(itemSupplier_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(editItem_panelLayout.createSequentialGroup()
+                        .addComponent(itemCategory_radiobutton)
+                        .addGap(28, 28, 28)
+                        .addComponent(itemCategory_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         editItem_panelLayout.setVerticalGroup(
             editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,19 +176,29 @@ public class EditItemWindow extends UI {
                 .addGap(18, 18, 18)
                 .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(itemDescription_radiobutton)
-                    .addComponent(description_scollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(description_scollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemSupplier_radiobutton)
+                    .addComponent(itemSupplier_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemCategory_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemCategory_radiobutton))
+                .addGap(18, 18, 18)
                 .addGroup(editItem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save_button)
                     .addComponent(cancel_button))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editItem_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(editItem_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +235,14 @@ public class EditItemWindow extends UI {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void itemSupplier_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupplier_radiobuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSupplier_radiobuttonActionPerformed
+
+    private void itemCategory_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategory_radiobuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemCategory_radiobuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,11 +283,15 @@ public class EditItemWindow extends UI {
     private javax.swing.JButton cancel_button;
     private javax.swing.JScrollPane description_scollpane;
     private javax.swing.JPanel editItem_panel;
+    private javax.swing.JComboBox itemCategory_combo;
+    private javax.swing.JRadioButton itemCategory_radiobutton;
     private javax.swing.JTextArea itemDescription_field;
     private javax.swing.JRadioButton itemDescription_radiobutton;
     private javax.swing.JComboBox itemName_combo;
     private javax.swing.JTextField itemName_field;
     private javax.swing.JRadioButton itemName_radiobutton;
+    private javax.swing.JComboBox itemSupplier_combo;
+    private javax.swing.JRadioButton itemSupplier_radiobutton;
     private javax.swing.JLabel item_label;
     private javax.swing.JButton save_button;
     // End of variables declaration//GEN-END:variables
