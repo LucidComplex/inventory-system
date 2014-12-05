@@ -5,13 +5,16 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
 import exceptions.ExecutorException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Category;
 import statics.Executor;
 
 /**
@@ -82,7 +85,10 @@ public class NewCategoryWindow extends UI {
         parentCategory_label.setText("Parent Category:");
         parentCategory_label.setName("categoryDescription_label"); // NOI18N
 
-        parentCategory_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Category> categoryList = Database.getCategoryList();
+        parentCategory_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        for(Category c : categoryList)
+        parentCategory_combo.addItem(c);
         parentCategory_combo.setName("parentCategory_combo"); // NOI18N
 
         javax.swing.GroupLayout category_panelLayout = new javax.swing.GroupLayout(category_panel);
@@ -128,7 +134,7 @@ public class NewCategoryWindow extends UI {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(categoryDescription_scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(parentCategory_label)
                     .addComponent(parentCategory_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -159,12 +165,12 @@ public class NewCategoryWindow extends UI {
             Logger.getLogger(NewCategoryWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new AddWindow().setVisible(true);
+        new NewItemWindow().setVisible(true);
     }//GEN-LAST:event_save_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new AddWindow().setVisible(true);
+        new NewItemWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     /**
@@ -220,6 +226,7 @@ public class NewCategoryWindow extends UI {
         Map fields = new HashMap();
         fields.put(categoryName_field.getName(), categoryName_field);
         fields.put(categoryDescription_textarea.getName(), categoryDescription_textarea);
+        fields.put(parentCategory_combo.getName(), parentCategory_combo);
         return fields;
     }
 
