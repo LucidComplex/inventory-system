@@ -6,8 +6,9 @@
 package commands;
 
 import base.Command;
-import base.Database;
 import base.UI;
+import java.time.Instant;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -39,6 +40,7 @@ public class AddItemCommand extends Command {
         item.setName(name.getText());
         item.setDescription( description.getText());
         item.setSupplier((Supplier)supplier.getSelectedItem());
+        item.setDateLastAdded(Date.from(Instant.now()));
 
         item.commit();
     }

@@ -5,13 +5,16 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
 import exceptions.ExecutorException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Item;
 import statics.Executor;
 
 /**
@@ -50,7 +53,10 @@ public class RemoveWindow extends UI {
 
         item_label.setText("Item Name:");
 
-        removeItem_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Item> itemList = Database.getItemList();
+        removeItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        for(Item i : itemList)
+        removeItem_combo.addItem(i);
         removeItem_combo.setName("removeItem_combo"); // NOI18N
 
         quantity_label.setText("Quantity:");

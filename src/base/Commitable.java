@@ -5,8 +5,8 @@
  */
 package base;
 
-import static base.Database.EMF;
-import javax.persistence.EntityManager;
+import static base.Database.em;
+
 
 /**
  *
@@ -18,11 +18,9 @@ public abstract class Commitable {
      * This method commits the object to the database
      */
     public void commit(){
-        EntityManager em = EMF.createEntityManager();
         em.getTransaction().begin();
         em.persist(this);
         em.getTransaction().commit();
-        em.close();
         updateDB();
     }
     
@@ -31,11 +29,9 @@ public abstract class Commitable {
      * from the database
      */
     public void delete(){
-        EntityManager em = EMF.createEntityManager();
         em.getTransaction().begin();
         em.remove(this);
         em.getTransaction().commit();
-        em.close();
         updateDB();
     }
     
@@ -44,11 +40,9 @@ public abstract class Commitable {
      * from the database
      */
     public void update(){
-        EntityManager em = EMF.createEntityManager();
         em.getTransaction().begin();
         em.merge(this);
         em.getTransaction().commit();
-        em.close();
         updateDB();
     }
     
