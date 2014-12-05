@@ -45,6 +45,8 @@ public class NewCategoryWindow extends UI {
         categoryDescription_textarea = new javax.swing.JTextArea();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        parentCategory_label = new javax.swing.JLabel();
+        parentCategory_combo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Category");
@@ -77,6 +79,12 @@ public class NewCategoryWindow extends UI {
             }
         });
 
+        parentCategory_label.setText("Parent Category:");
+        parentCategory_label.setName("categoryDescription_label"); // NOI18N
+
+        parentCategory_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        parentCategory_combo.setName("parentCategory_combo"); // NOI18N
+
         javax.swing.GroupLayout category_panelLayout = new javax.swing.GroupLayout(category_panel);
         category_panel.setLayout(category_panelLayout);
         category_panelLayout.setHorizontalGroup(
@@ -86,11 +94,17 @@ public class NewCategoryWindow extends UI {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, category_panelLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(categoryDescription_label)
                             .addGroup(category_panelLayout.createSequentialGroup()
                                 .addComponent(categoryName_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(categoryName_field))))
+                                .addComponent(categoryName_field))
+                            .addGroup(category_panelLayout.createSequentialGroup()
+                                .addComponent(categoryDescription_label)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(category_panelLayout.createSequentialGroup()
+                                .addComponent(parentCategory_label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(parentCategory_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(category_panelLayout.createSequentialGroup()
                         .addContainerGap(88, Short.MAX_VALUE)
                         .addComponent(categoryDescription_scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -100,12 +114,12 @@ public class NewCategoryWindow extends UI {
                 .addComponent(save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancel_button, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(32, 32, 32))
         );
         category_panelLayout.setVerticalGroup(
             category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(category_panelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(categoryName_label)
                     .addComponent(categoryName_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,16 +129,20 @@ public class NewCategoryWindow extends UI {
                 .addComponent(categoryDescription_scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(parentCategory_label)
+                    .addComponent(parentCategory_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save_button)
                     .addComponent(cancel_button))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(category_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(category_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +210,8 @@ public class NewCategoryWindow extends UI {
     private javax.swing.JTextField categoryName_field;
     private javax.swing.JLabel categoryName_label;
     private javax.swing.JPanel category_panel;
+    private javax.swing.JComboBox parentCategory_combo;
+    private javax.swing.JLabel parentCategory_label;
     private javax.swing.JButton save_button;
     // End of variables declaration//GEN-END:variables
 

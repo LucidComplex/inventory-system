@@ -35,8 +35,13 @@ public class EditCategoryWindow extends javax.swing.JFrame {
         editDescription_radiobutton = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         editDescription_field = new javax.swing.JTextArea();
+        editParent_radiobutton = new javax.swing.JRadioButton();
+        editParent_combo = new javax.swing.JComboBox();
+        ok_button = new javax.swing.JButton();
+        cancel_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Edit Category");
 
         category_label.setText("Choose Category to Edit:");
 
@@ -45,17 +50,45 @@ public class EditCategoryWindow extends javax.swing.JFrame {
 
         editName_radiobutton.setText("Edit Category Name:");
         editName_radiobutton.setName("editName_radiobutton"); // NOI18N
+        editName_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editName_radiobuttonActionPerformed(evt);
+            }
+        });
 
+        editName_field.setEnabled(false);
         editName_field.setName("editName_field"); // NOI18N
 
         editDescription_radiobutton.setText("Edit Category Description:");
         editDescription_radiobutton.setName("editDescription_radiobutton"); // NOI18N
+        editDescription_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editDescription_radiobuttonActionPerformed(evt);
+            }
+        });
 
         editDescription_field.setColumns(20);
         editDescription_field.setLineWrap(true);
         editDescription_field.setRows(5);
+        editDescription_field.setEnabled(false);
         editDescription_field.setName("editDescription_field"); // NOI18N
         jScrollPane1.setViewportView(editDescription_field);
+
+        editParent_radiobutton.setText("Edit Parent Category:");
+        editParent_radiobutton.setName("editParent_radiobutton"); // NOI18N
+        editParent_radiobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editParent_radiobuttonActionPerformed(evt);
+            }
+        });
+
+        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editParent_combo.setEnabled(false);
+        editParent_combo.setName("editParent_combo"); // NOI18N
+
+        ok_button.setText("OK");
+
+        cancel_button.setText("Cancel");
 
         javax.swing.GroupLayout editCategory_panelLayout = new javax.swing.GroupLayout(editCategory_panel);
         editCategory_panel.setLayout(editCategory_panelLayout);
@@ -72,11 +105,22 @@ public class EditCategoryWindow extends javax.swing.JFrame {
                         .addComponent(category_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(category_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(editCategory_panelLayout.createSequentialGroup()
-                        .addComponent(editDescription_radiobutton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(editCategory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(editCategory_panelLayout.createSequentialGroup()
+                            .addComponent(editParent_radiobutton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(editParent_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(editCategory_panelLayout.createSequentialGroup()
+                            .addComponent(editDescription_radiobutton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editCategory_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ok_button, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancel_button, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         editCategory_panelLayout.setVerticalGroup(
             editCategory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +137,15 @@ public class EditCategoryWindow extends javax.swing.JFrame {
                 .addGroup(editCategory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editDescription_radiobutton)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(editCategory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editParent_radiobutton)
+                    .addComponent(editParent_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(editCategory_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ok_button)
+                    .addComponent(cancel_button))
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,11 +156,32 @@ public class EditCategoryWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editCategory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(editCategory_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editName_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editName_radiobuttonActionPerformed
+        // TODO add your handling code here:
+        if(editName_radiobutton.isSelected())
+            editName_field.setEnabled(true);
+        else editName_field.setEnabled(false);
+    }//GEN-LAST:event_editName_radiobuttonActionPerformed
+
+    private void editDescription_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDescription_radiobuttonActionPerformed
+        // TODO add your handling code here:
+        if(editDescription_radiobutton.isSelected())
+            editDescription_field.setEnabled(true);
+        else editDescription_field.setEnabled(false);
+    }//GEN-LAST:event_editDescription_radiobuttonActionPerformed
+
+    private void editParent_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editParent_radiobuttonActionPerformed
+        // TODO add your handling code here:
+        if(editParent_radiobutton.isSelected())
+            editParent_combo.setEnabled(true);
+        else editParent_combo.setEnabled(false);
+    }//GEN-LAST:event_editParent_radiobuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +219,7 @@ public class EditCategoryWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancel_button;
     private javax.swing.JComboBox category_combo;
     private javax.swing.JLabel category_label;
     private javax.swing.JPanel editCategory_panel;
@@ -153,6 +227,9 @@ public class EditCategoryWindow extends javax.swing.JFrame {
     private javax.swing.JRadioButton editDescription_radiobutton;
     private javax.swing.JTextField editName_field;
     private javax.swing.JRadioButton editName_radiobutton;
+    private javax.swing.JComboBox editParent_combo;
+    private javax.swing.JRadioButton editParent_radiobutton;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton ok_button;
     // End of variables declaration//GEN-END:variables
 }
