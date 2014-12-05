@@ -56,6 +56,7 @@ public class AddWindow extends UI {
 
         List<Item> itemList = Database.getItemList();
         itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        itemName_combo.addItem(new String("--- SELECT ITEM ---"));
         for(Item i : itemList)
         itemName_combo.addItem(i);
         itemName_combo.setName("itemName_combo"); // NOI18N
@@ -84,6 +85,7 @@ public class AddWindow extends UI {
             }
         });
 
+        quantity_field.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         quantity_field.setName("quantity_field"); // NOI18N
 
         javax.swing.GroupLayout additem_panelLayout = new javax.swing.GroupLayout(additem_panel);

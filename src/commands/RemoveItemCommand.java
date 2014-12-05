@@ -7,6 +7,9 @@ package commands;
 
 import base.Command;
 import base.UI;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import models.Item;
 
 /**
  *
@@ -21,12 +24,23 @@ public class RemoveItemCommand extends Command {
 
     @Override
     public void execute() {
-        /*
+        JSpinner quantitySpinner = (JSpinner) fields.get("quantity_field");
+        JComboBox selectedItem = (JComboBox) fields.get("removeItem_combo");
         
+        int quantity = (int) quantitySpinner.getValue();
+        Object selectedObject = selectedItem.getSelectedItem();
+        if(selectedObject instanceof String)
+            return;
+        Item item = (Item) selectedObject;
         
-        */
+        // delete the item completely when deleting and quantity is 0
+        if(item.getQuantity()==0){
+            item.delete();
+            return;
+        }
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        item.decQuantity(quantity);
+        item.update();
     }
     
 }

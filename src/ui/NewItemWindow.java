@@ -98,6 +98,7 @@ public class NewItemWindow extends UI {
         List<Supplier> supplierList = Database.getSupplierList();
         supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
         supplier_combo.setName("supplier_combo"); // NOI18N
+        supplier_combo.addItem(new String("--- SELECT SUPPLIER ---"));
         for(Supplier s : supplierList)
         supplier_combo.addItem(s);
         supplier_combo.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +120,7 @@ public class NewItemWindow extends UI {
         List<Category> categoryList = Database.getCategoryList();
         category_combo.setModel(new javax.swing.DefaultComboBoxModel());
         category_combo.setName("category_combo"); // NOI18N
+        category_combo.addItem(new String("--- SELECT CATEGORY ---"));
         for(Category c : categoryList)
         category_combo.addItem(c);
 

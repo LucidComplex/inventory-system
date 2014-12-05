@@ -191,7 +191,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="supplier_comboActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Supplier s : supplierList)&#xa;    supplier_combo.addItem(s);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="supplier_combo.addItem(new String(&quot;--- SELECT SUPPLIER ---&quot;));&#xa;for(Supplier s : supplierList)&#xa;    supplier_combo.addItem(s);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="newSupplier_button">
@@ -216,7 +216,7 @@
             <Property name="name" type="java.lang.String" value="category_combo" noResource="true"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Category c : categoryList)&#xa;    category_combo.addItem(c);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="category_combo.addItem(new String(&quot;--- SELECT CATEGORY ---&quot;));&#xa;for(Category c : categoryList)&#xa;    category_combo.addItem(c);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Category&gt; categoryList = Database.getCategoryList();"/>
           </AuxValues>
         </Component>

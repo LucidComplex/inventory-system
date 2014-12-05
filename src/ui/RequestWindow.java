@@ -5,13 +5,16 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
 import exceptions.ExecutorException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Item;
 import statics.Executor;
 
 /**
@@ -52,9 +55,13 @@ public class RequestWindow extends UI {
 
         quantity_label.setText("Quantity:");
 
-        requestItem_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Item> itemList = Database.getItemList();
+        requestItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        for(Item i : itemList)
+        requestItem_combo.addItem(i);
         requestItem_combo.setName("requestItem_combo"); // NOI18N
 
+        quantity_spinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         quantity_spinner.setName("quantity_field"); // NOI18N
 
         request_button.setText("Request");

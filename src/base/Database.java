@@ -18,7 +18,7 @@ import models.*;
  */
 public class Database {
     public static EntityManagerFactory EMF;
-    private static EntityManager em;
+    public static EntityManager em;
     private static List<Item> itemList;
     private static List<Supplier> supplierList;
     private static List<Category> categoryList;

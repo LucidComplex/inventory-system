@@ -166,10 +166,4 @@ public class Item extends Commitable implements Serializable {
         return name;
     }
     
-    @Override
-    public void commit(){
-        this.dateLastAdded = Date.from(Instant.now());
-        super.commit();
-    }
-
 }
