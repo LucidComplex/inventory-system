@@ -169,11 +169,6 @@ public class EditWindow extends UI {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-=======
-    private javax.swing.JButton cancel_button;
-    private javax.swing.JButton editCategory_button;
->>>>>>> 5eac998a0c6243087df7d17bcddb27229106d782
     private javax.swing.JButton editItem_button;
     private javax.swing.JButton editSupplier_button;
     private javax.swing.JPanel jPanel1;
