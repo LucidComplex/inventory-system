@@ -5,8 +5,12 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import models.Item;
 
 /**
  *
@@ -51,7 +55,10 @@ public class EditItemWindow extends UI {
 
         item_label.setText("Choose Item to Edit:");
 
-        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Item> itemList = Database.getItemList();
+        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        for(Item i : itemList)
+        itemName_combo.addItem(i);
         itemName_combo.setName("itemName_combo"); // NOI18N
 
         itemName_radiobutton.setLabel("Edit Item Name:");
@@ -235,6 +242,10 @@ public class EditItemWindow extends UI {
 
     @Override
     public Map getFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map fields = new HashMap();
+        fields.put(itemDescription_field.getName(), itemDescription_field);
+        fields.put(itemName_field.getName(), itemName_field);
+        fields.put(itemName_combo.getName(), itemName_combo);
+        return fields;
     }
 }

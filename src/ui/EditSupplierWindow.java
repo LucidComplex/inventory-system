@@ -5,8 +5,12 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import models.Supplier;
 
 /**
  *
@@ -54,7 +58,10 @@ public class EditSupplierWindow extends UI {
 
         editSupplier_label.setText("Choose Supplier to Edit:");
 
-        supplier_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Supplier> supplierList = Database.getSupplierList();
+        supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        for(Supplier s : supplierList)
+        supplier_combo.addItem(s);
         supplier_combo.setName("supplier_combo"); // NOI18N
 
         name_radiobutton.setText("Edit Supplier Name:");
@@ -340,6 +347,13 @@ public class EditSupplierWindow extends UI {
 
     @Override
     public Map getFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map fields = new HashMap();
+        fields.put(city_field.getName(), city_field);
+        fields.put(zipcode_field.getName(), zipcode_field);
+        fields.put(street_field.getName(), street_field);
+        fields.put(province_field.getName(), province_field);
+        fields.put(country_field.getName(), country_field);
+        fields.put(name_field.getName(), name_field);
+        return fields;
     }
 }

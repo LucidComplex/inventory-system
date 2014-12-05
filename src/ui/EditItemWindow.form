@@ -109,16 +109,14 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="itemName_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="for(Item i : itemList)&#xa;    itemName_combo.addItem(i);">
+              <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="itemName_combo" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Item&gt; itemList = Database.getItemList();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JRadioButton" name="itemName_radiobutton">
           <Properties>
