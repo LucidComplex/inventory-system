@@ -28,7 +28,10 @@ public class RemoveItemCommand extends Command {
         JComboBox selectedItem = (JComboBox) fields.get("removeItem_combo");
         
         int quantity = (int) quantitySpinner.getValue();
-        Item item = (Item) selectedItem.getSelectedItem();
+        Object selectedObject = selectedItem.getSelectedItem();
+        if(selectedObject instanceof String)
+            return;
+        Item item = (Item) selectedObject;
         
         // delete the item completely when deleting and quantity is 0
         if(item.getQuantity()==0){

@@ -29,8 +29,13 @@ public class RequestCommand extends Command {
         JComboBox item =  (JComboBox) fields.get("requestItem_combo");
         JSpinner quantity = (JSpinner) fields.get("quantity_spinner");
         PurchaseRequest request = ModelFactory.createRequest();
+        Object selectedObject = item.getSelectedItem();
         
-        request.setRequestedItem((Item) item.getSelectedItem());
+        if(selectedObject instanceof String)
+            return;
+        
+        Item requestedItem = (Item) selectedObject;
+        request.setRequestedItem(requestedItem);
         request.setRequestedQuantity((int) quantity.getValue());
         request.commit();
     }

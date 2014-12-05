@@ -6,10 +6,8 @@
 package commands;
 
 import base.Command;
-import static base.Database.EMF;
 import base.UI;
 import exceptions.ExecutorException;
-import javax.persistence.EntityManager;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import models.Item;
@@ -29,7 +27,12 @@ public class AddQuantityCommand extends Command {
     public void execute() throws ExecutorException {
         JComboBox item = (JComboBox) fields.get("itemName_combo");
         JSpinner quantity = (JSpinner) fields.get("quantity_field");
-        Item selectedItem = (Item) item.getSelectedItem();
+        Object selectedObject = item.getSelectedItem();
+        
+        if(selectedObject instanceof String)
+            return;
+        
+        Item selectedItem = (Item) selectedObject;
         int selectedQuantity = (int) quantity.getValue();
         
         selectedItem.incQuantity(selectedQuantity);

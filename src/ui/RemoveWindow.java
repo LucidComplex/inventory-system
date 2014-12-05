@@ -55,9 +55,15 @@ public class RemoveWindow extends UI {
 
         List<Item> itemList = Database.getItemList();
         removeItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        removeItem_combo.addItem(new String("--- SELECT ITEM ---"));
         for(Item i : itemList)
         removeItem_combo.addItem(i);
         removeItem_combo.setName("removeItem_combo"); // NOI18N
+        removeItem_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                removeItem_comboItemStateChanged(evt);
+            }
+        });
 
         quantity_label.setText("Quantity:");
 
@@ -75,6 +81,7 @@ public class RemoveWindow extends UI {
             }
         });
 
+        quantity_field.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         quantity_field.setName("quantity_field"); // NOI18N
 
         javax.swing.GroupLayout remove_panelLayout = new javax.swing.GroupLayout(remove_panel);
@@ -144,6 +151,11 @@ public class RemoveWindow extends UI {
         this.dispose();
         new MainWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void removeItem_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_removeItem_comboItemStateChanged
+        int maxQuantity = ((Item) removeItem_combo.getSelectedItem()).getQuantity();
+        quantity_field.setModel(new javax.swing.SpinnerNumberModel(0, 0, maxQuantity, 1));
+    }//GEN-LAST:event_removeItem_comboItemStateChanged
 
     /**
      * @param args the command line arguments
