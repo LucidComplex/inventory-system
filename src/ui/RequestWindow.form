@@ -100,7 +100,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="requestItem_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor" postCode="for(Item i : itemList)&#xa;    requestItem_combo.addItem(i);">
               <StringArray count="4">
                 <StringItem index="0" value="Item 1"/>
                 <StringItem index="1" value="Item 2"/>
@@ -110,6 +110,9 @@
             </Property>
             <Property name="name" type="java.lang.String" value="requestItem_combo" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Item&gt; itemList = Database.getItemList();"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="quantity_spinner">
           <Properties>
