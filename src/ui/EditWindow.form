@@ -60,6 +60,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="editItem_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="editSupplier_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="editCategory_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Component id="ok_button" min="-2" max="-2" attributes="0"/>
@@ -103,6 +104,20 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ok_buttonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="editCategory_button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit Category"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
+            <Property name="name" type="java.lang.String" value="editCategory_button" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCategory_buttonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

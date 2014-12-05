@@ -64,6 +64,15 @@ public class EditWindow extends UI {
             }
         });
 
+        editCategory_button.setText("Edit Category");
+        editCategory_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        editCategory_button.setName("editCategory_button"); // NOI18N
+        editCategory_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCategory_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,6 +129,10 @@ public class EditWindow extends UI {
         new EditSupplierWindow().setVisible(true);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
+    private void editCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCategory_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editCategory_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,6 +169,11 @@ public class EditWindow extends UI {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton cancel_button;
+    private javax.swing.JButton editCategory_button;
+>>>>>>> 5eac998a0c6243087df7d17bcddb27229106d782
     private javax.swing.JButton editItem_button;
     private javax.swing.JButton editSupplier_button;
     private javax.swing.JPanel jPanel1;
