@@ -42,7 +42,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="editItem_button" min="-2" pref="94" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <Component id="editCategory_button" min="-2" pref="94" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="editSupplier_button" min="-2" pref="94" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
@@ -51,7 +53,7 @@
                   <Component id="save_button" min="-2" pref="66" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cancel_button" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,13 +64,14 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="editItem_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="editSupplier_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="editCategory_button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cancel_button" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="save_button" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cancel_button" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,6 +119,20 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancel_buttonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="editCategory_button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit Category"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
+            <Property name="name" type="java.lang.String" value="editCategory_button" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCategory_buttonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
