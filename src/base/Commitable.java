@@ -23,6 +23,7 @@ public abstract class Commitable {
         em.persist(this);
         em.getTransaction().commit();
         em.close();
+        updateDB();
     }
     
     /**
@@ -35,6 +36,7 @@ public abstract class Commitable {
         em.remove(this);
         em.getTransaction().commit();
         em.close();
+        updateDB();
     }
     
     /**
@@ -47,5 +49,10 @@ public abstract class Commitable {
         em.merge(this);
         em.getTransaction().commit();
         em.close();
+        updateDB();
+    }
+    
+    private void updateDB(){
+        Database.refreshDatabase();
     }
 }

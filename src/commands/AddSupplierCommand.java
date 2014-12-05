@@ -8,6 +8,7 @@ package commands;
 import base.Command;
 import base.UI;
 import javax.swing.JTextField;
+import models.Address;
 import models.Supplier;
 import models.factory.ModelFactory;
 
@@ -25,11 +26,25 @@ public class AddSupplierCommand extends Command {
     @Override
     public void execute() {
         Supplier newSupplier = ModelFactory.createSupplier();
+        Address address = ModelFactory.createAddress();
         
         JTextField city = (JTextField) fields.get("city_field");
-        // TODO
+        JTextField zipcode = (JTextField) fields.get("zipcode_field");
+        JTextField street = (JTextField) fields.get("street_field");
+        JTextField province = (JTextField) fields.get("province_field");
+        JTextField country = (JTextField) fields.get("country_field");
+        JTextField name = (JTextField) fields.get("supplierName_field");
         
-        //newSupplier.commit();
+        address.setCity(city.getText());
+        address.setCountry(country.getText());
+        address.setProvince(province.getText());
+        address.setStreet(street.getText());
+        address.setZipcode(zipcode.getText());
+        
+        newSupplier.setAddress(address);
+        newSupplier.setName(name.getText());
+        
+        newSupplier.commit();
     }
     
 }

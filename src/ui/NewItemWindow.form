@@ -182,7 +182,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="supplier_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" preCode="TypedQuery suppliers = em.createQuery(&quot;SELECT s FROM Supplier s&quot;, Supplier.class);&#xa;List&lt;Supplier&gt; supplierList = suppliers.getResultList();">
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" preCode="List&lt;Supplier&gt; supplierList = Database.getSupplierList();">
               <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="supplier_combo" noResource="true"/>
@@ -217,7 +217,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="for(Category c : categoryList)&#xa;    category_combo.addItem(c);"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="TypedQuery categories = em.createQuery(&quot;SELECT c FROM Category c&quot;, Category.class);&#xa;List&lt;Category&gt; categoryList = categories.getResultList();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Category&gt; categoryList = Database.getCategoryList();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="newCategory_button">

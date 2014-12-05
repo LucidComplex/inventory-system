@@ -7,8 +7,11 @@ package ui;
 
 import base.UI;
 import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import statics.Executor;
 
 /**
@@ -124,6 +127,11 @@ public class RequestWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void request_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_buttonActionPerformed
+        try {
+            Executor.execute("requestItem");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(RequestWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
         new MainWindow().setVisible(true);
     }//GEN-LAST:event_request_buttonActionPerformed

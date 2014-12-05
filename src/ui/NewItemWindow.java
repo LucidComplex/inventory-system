@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.swing.JFrame;
 import models.Category;
 import models.Supplier;
 import statics.Executor;
@@ -26,9 +24,6 @@ import statics.Executor;
  * @author MiriamMarie
  */
 public class NewItemWindow extends UI {
-    JFrame supplier = new NewSupplierWindow();
-    JFrame category = new NewCategoryWindow();
-    EntityManager em = Database.EMF.createEntityManager();
     
     /**
      * Creates new form NewItem
@@ -100,8 +95,7 @@ public class NewItemWindow extends UI {
         supplier_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         supplier_label.setText("Supplier:");
 
-        TypedQuery suppliers = em.createQuery("SELECT s FROM Supplier s", Supplier.class);
-        List<Supplier> supplierList = suppliers.getResultList();
+        List<Supplier> supplierList = Database.getSupplierList();
         supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
         supplier_combo.setName("supplier_combo"); // NOI18N
         for(Supplier s : supplierList)
@@ -122,8 +116,7 @@ public class NewItemWindow extends UI {
         category_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         category_label.setText("Category:");
 
-        TypedQuery categories = em.createQuery("SELECT c FROM Category c", Category.class);
-        List<Category> categoryList = categories.getResultList();
+        List<Category> categoryList = Database.getCategoryList();
         category_combo.setModel(new javax.swing.DefaultComboBoxModel());
         category_combo.setName("category_combo"); // NOI18N
         for(Category c : categoryList)
@@ -232,16 +225,17 @@ public class NewItemWindow extends UI {
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
+        new AddWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void newSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplier_buttonActionPerformed
-        // TODO add your handling code here:
-        supplier.show();
+        this.dispose();
+        new NewSupplierWindow().setVisible(true);
     }//GEN-LAST:event_newSupplier_buttonActionPerformed
 
     private void newCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCategory_buttonActionPerformed
-        // TODO add your handling code here:
-        category.show();
+        this.dispose();
+        new NewCategoryWindow().setVisible(true);
     }//GEN-LAST:event_newCategory_buttonActionPerformed
 
     private void supplier_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_comboActionPerformed
