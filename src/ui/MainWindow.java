@@ -30,6 +30,7 @@ public class MainWindow extends UI {
     public MainWindow() {
         initComponents();
         Executor.put("search", CommandFactory.createSearchCommand(this));
+        this.getRootPane().setDefaultButton(search_button);
     }
 
     /**
