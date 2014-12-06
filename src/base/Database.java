@@ -119,5 +119,11 @@ public class Database {
         defaultUser.setPassword("1234");
         defaultUser.setContact(defaultContact);
         defaultUser.commit();
+        
+        Category defaultCategory = ModelFactory.createCategory();
+        defaultCategory.setName("Default");
+        defaultCategory.setDescription("");
+        defaultCategory.setParentcategory(null);
+        defaultCategory.commit();
     }
 }

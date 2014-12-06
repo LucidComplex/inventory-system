@@ -27,18 +27,12 @@ public class EditSupplierCommand extends Command {
     @Override
     public void execute() throws ExecutorException {
         JComboBox editSupplier = (JComboBox) fields.get("supplier_combo");
-        Supplier supplier = (Supplier) editSupplier.getSelectedItem();
+        Object selectedObject = editSupplier.getSelectedItem();
+        if(selectedObject instanceof String)
+            return;
+        Supplier supplier = (Supplier) selectedObject;
         Address address = supplier.getAddress();
         Contact contact = supplier.getContact();
-        
-        JRadioButton name = (JRadioButton) fields.get("name_radiobutton");
-        JRadioButton street = (JRadioButton) fields.get("street_radiobutton");
-        JRadioButton city = (JRadioButton) fields.get("city_radiobutton");
-        JRadioButton country = (JRadioButton) fields.get("country_radiobutton");
-        JRadioButton province = (JRadioButton) fields.get("province_radiobutton");
-        JRadioButton zipcode = (JRadioButton) fields.get("zipcode_radiobutton");
-        JRadioButton number = (JRadioButton) fields.get("contact_radiobutton");
-        JRadioButton email = (JRadioButton) fields.get("email_radiobutton");
         
         JTextField newName = (JTextField) fields.get("name_field");
         JTextField newStreet = (JTextField) fields.get("street_field");
@@ -46,28 +40,26 @@ public class EditSupplierCommand extends Command {
         JTextField newCountry = (JTextField) fields.get("country_field");
         JTextField newProvince = (JTextField) fields.get("province_field");
         JTextField newZipcode = (JTextField) fields.get("zipcode_field");
-        JTextField newNumber = (JTextField) fields.get("number_field");
+        JTextField newContact = (JTextField) fields.get("contact_field");
         JTextField newEmail = (JTextField) fields.get("email_field");
         
-        if(name.isSelected())
+        if(newName.isEnabled())
             supplier.setName(newName.getText());
-        if(street.isSelected())
+        if(newStreet.isEnabled())
             address.setStreet(newStreet.getText());
-        if(city.isSelected())
+        if(newCity.isEnabled())
             address.setCity(newCity.getText());
-        if(country.isSelected())
+        if(newCountry.isEnabled())
             address.setCountry(newCountry.getText());
-        if(province.isSelected())
+        if(newProvince.isEnabled())
             address.setProvince(newProvince.getText());
-        if(zipcode.isSelected())
+        if(newZipcode.isEnabled())
             address.setZipcode(newZipcode.getText());
-        if(number.isSelected())
-            contact.setNumber(newNumber.getText());
-        if(email.isSelected())
+        if(newContact.isEnabled())
+            contact.setNumber(newContact.getText());
+        if(newEmail.isEnabled())
             contact.setEmail(newEmail.getText());
             
-            
-//        supplier.setAddress(address);
         supplier.update();
     }
     

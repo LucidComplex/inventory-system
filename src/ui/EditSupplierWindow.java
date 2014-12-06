@@ -30,7 +30,7 @@ public class EditSupplierWindow extends UI {
      */
     public EditSupplierWindow() {
         initComponents();
-        Executor.put("editSupplier", CommandFactory.createAddSupplierCommand(this));
+        Executor.put("editSupplier", CommandFactory.createEditSupplierCommand(this));
     }
 
     /**
@@ -434,12 +434,15 @@ public class EditSupplierWindow extends UI {
     @Override
     public Map getFields() {
         Map fields = new HashMap();
+        fields.put(supplier_combo.getName(), supplier_combo);
         fields.put(city_field.getName(), city_field);
         fields.put(zipcode_field.getName(), zipcode_field);
         fields.put(street_field.getName(), street_field);
         fields.put(province_field.getName(), province_field);
         fields.put(country_field.getName(), country_field);
         fields.put(name_field.getName(), name_field);
+        fields.put(email_field.getName(), email_field);
+        fields.put(contact_field.getName(), contact_field);
         return fields;
     }
 }

@@ -312,6 +312,8 @@ public class NewSupplierWindow extends UI {
         fields.put(province_field.getName(), province_field);
         fields.put(country_field.getName(), country_field);
         fields.put(supplierName_field.getName(), supplierName_field);
+        fields.put(contact_field.getName(), contact_field);
+        fields.put(email_field.getName(), email_field);
         return fields;
     }
 }
