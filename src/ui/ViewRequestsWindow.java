@@ -5,17 +5,25 @@
  */
 package ui;
 
+import base.UI;
+import commands.factory.CommandFactory;
+import java.util.HashMap;
+import java.util.Map;
+import statics.Executor;
+
 /**
  *
  * @author MiriamMarie
  */
-public class ViewRequestsWindow extends javax.swing.JFrame {
+public class ViewRequestsWindow extends UI {
 
     /**
      * Creates new form ViewRequestsWindow
      */
     public ViewRequestsWindow() {
         initComponents();
+        Executor.put("accept", CommandFactory.createAcceptRequestCommand(this));
+        Executor.put("reject", CommandFactory.createRejectRequestCommand(this));
     }
 
     /**
@@ -59,6 +67,11 @@ public class ViewRequestsWindow extends javax.swing.JFrame {
 
         close_button.setText("Close");
         close_button.setName("close_button"); // NOI18N
+        close_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                close_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout requests_panelLayout = new javax.swing.GroupLayout(requests_panel);
         requests_panel.setLayout(requests_panelLayout);
@@ -99,6 +112,11 @@ public class ViewRequestsWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
+        new MainWindow().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_close_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,4 +161,11 @@ public class ViewRequestsWindow extends javax.swing.JFrame {
     private javax.swing.JPanel requests_panel;
     private javax.swing.JTable requests_table;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Map getFields() {
+        Map fields = new HashMap();
+        fields.put(requests_table.getName(), requests_table);
+        return fields;
+    }
 }

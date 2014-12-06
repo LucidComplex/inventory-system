@@ -254,7 +254,8 @@ public class MainWindow extends UI {
     }//GEN-LAST:event_search_buttonActionPerformed
 
     private void viewRequests_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequests_buttonActionPerformed
-        // TODO add your handling code here:
+        new ViewRequestsWindow().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_viewRequests_buttonActionPerformed
 
     /**

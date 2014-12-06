@@ -104,4 +104,17 @@ public class CommandFactory {
     public static Command createEditSupplierCommand(UI ui) {
         return new EditSupplierCommand(ui);
     }
+    
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that accepts a request.
+     */
+    public static Command createAcceptRequestCommand(UI ui){
+        return new AcceptRequestCommand(ui);
+    }
+    
+    public static Command createRejectRequestCommand(UI ui){
+        return new RejectRequestCommand(ui);
+    }
 }
