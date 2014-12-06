@@ -83,5 +83,9 @@ public class PurchaseRequest extends Commitable implements Serializable {
         this.requestedQuantity = requestedQuantity;
     }
     
+    @Override
+    public String toString(){
+        return requestedItem.getName();
+    }
     
 }

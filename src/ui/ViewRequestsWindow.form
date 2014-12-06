@@ -76,14 +76,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="requests_table">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
-                </Property>
+                <Property name="model" postCode="refreshTable();"/>
                 <Property name="name" type="java.lang.String" value="requests_table" noResource="true"/>
               </Properties>
             </Component>
@@ -100,6 +93,9 @@
             <Property name="text" type="java.lang.String" value="Reject"/>
             <Property name="name" type="java.lang.String" value="reject_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reject_buttonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="close_button">
           <Properties>

@@ -5,10 +5,16 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.PurchaseRequest;
 import statics.Executor;
 
 /**
@@ -45,17 +51,7 @@ public class ViewRequestsWindow extends UI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Requests");
 
-        requests_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        refreshTable();
         requests_table.setName("requests_table"); // NOI18N
         jScrollPane1.setViewportView(requests_table);
 
@@ -64,6 +60,11 @@ public class ViewRequestsWindow extends UI {
 
         reject_button.setText("Reject");
         reject_button.setName("reject_button"); // NOI18N
+        reject_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reject_buttonActionPerformed(evt);
+            }
+        });
 
         close_button.setText("Close");
         close_button.setName("close_button"); // NOI18N
@@ -118,6 +119,15 @@ public class ViewRequestsWindow extends UI {
         this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
 
+    private void reject_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reject_buttonActionPerformed
+        try {
+            Executor.execute("reject");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(ViewRequestsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        refreshTable();
+    }//GEN-LAST:event_reject_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -161,11 +171,35 @@ public class ViewRequestsWindow extends UI {
     private javax.swing.JPanel requests_panel;
     private javax.swing.JTable requests_table;
     // End of variables declaration//GEN-END:variables
-
+    
+    private Object[][] populateTable(List list){
+        Object[][] content = new Object[list.size()][2];
+        for(int i=0; i<list.size(); i++){
+            PurchaseRequest temp = (PurchaseRequest) list.get(i);
+            content[i][0] = temp;
+            content[i][1] = temp.getRequestedQuantity();
+        }
+        return content;
+    }
+    
     @Override
     public Map getFields() {
         Map fields = new HashMap();
         fields.put(requests_table.getName(), requests_table);
         return fields;
+    }
+    
+    private void refreshTable(){
+        List<PurchaseRequest> requestList = Database.getRequestList();
+        Object[][] tableContents = populateTable(requestList);
+        requests_table.setModel(
+            new javax.swing.table.DefaultTableModel(
+                tableContents,
+                new String [] {
+                    "Requested Item",
+                    "Requested Quantity"
+                }
+            )
+        );
     }
 }

@@ -6,9 +6,12 @@
 package commands;
 
 import base.Command;
+import base.Database;
 import base.UI;
 import exceptions.ExecutorException;
+import java.util.List;
 import javax.swing.JTable;
+import models.PurchaseRequest;
 
 /**
  *
@@ -24,7 +27,9 @@ public class RejectRequestCommand extends Command {
     @Override
     public void execute() throws ExecutorException {
         JTable table = (JTable) fields.get("requests_table");
-        //
+        List<PurchaseRequest> requestList = Database.getRequestList();
+        PurchaseRequest selectedRequest = requestList.get(table.getSelectedRow());
+        selectedRequest.delete();
     }
     
 }
