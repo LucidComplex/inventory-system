@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import models.*;
+import models.factory.ModelFactory;
 
 /**
  *
@@ -24,7 +25,16 @@ public class Database {
     private static List<Category> categoryList;
     private static List<Department> departmentList;
     private static List<PurchaseRequest> requestList;
-
+    
+    public Database(){
+        createConnection();
+        loadDatabase();
+        
+        // no user at all seed the database
+        if(em.find(Monkey.class, 1)==null)
+            addDefault();
+    }        
+    
     /**
      * @return the itemList
      */
@@ -67,12 +77,6 @@ public class Database {
         requestList = aRequestList;
     }
     
-    public Database(){
-        createConnection();
-        loadDatabase();
-    }        
-    
-    
     private static void loadDatabase(){
         TypedQuery items = em.createQuery("SELECT i FROM Item i", Item.class);
         itemList = items.getResultList();
@@ -93,5 +97,27 @@ public class Database {
     private static void createConnection(){
         EMF = Persistence.createEntityManagerFactory("InventoryPersistence");
         em = EMF.createEntityManager();
+    }
+    
+    private void addDefault(){
+        Monkey root = ModelFactory.createMonkey();
+        Contact rootContact = ModelFactory.createContact();
+        rootContact.setEmail("root@database.com");
+        rootContact.setNumber("1234567890");
+        root.setHead(true);
+        root.setUsername("root");
+        root.setPassword("1234");
+        root.setContact(rootContact);
+        root.commit();
+        
+        Monkey defaultUser = ModelFactory.createMonkey();
+        Contact defaultContact = ModelFactory.createContact();
+        defaultContact.setEmail("default@database.com");
+        defaultContact.setNumber("0987654321");
+        defaultUser.setHead(false);
+        defaultUser.setUsername("default");
+        defaultUser.setPassword("1234");
+        defaultUser.setContact(defaultContact);
+        defaultUser.commit();
     }
 }
