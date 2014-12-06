@@ -31,15 +31,20 @@ public class AddItemCommand extends Command {
     @Override
     public void execute() {
         Item item = ModelFactory.createItem();
-        JComboBox category = (JComboBox) fields.get("category_combo");
-        JComboBox supplier = (JComboBox) fields.get("supplier_combo");
+        JComboBox selectedCategory = (JComboBox) fields.get("category_combo");
+        JComboBox selectedSupplier = (JComboBox) fields.get("supplier_combo");
+        Object categoryObject = selectedCategory.getSelectedItem();
+        Object supplierObject = selectedSupplier.getSelectedItem();
+        if(categoryObject instanceof String || supplierObject instanceof String)
+            return;
+
         JTextField name = (JTextField) fields.get("name_field");
         JTextArea  description = (JTextArea) fields.get("description_textarea");
         
-        item.setCategory((Category)category.getSelectedItem());
+        item.setCategory((Category)categoryObject);
         item.setName(name.getText());
         item.setDescription( description.getText());
-        item.setSupplier((Supplier)supplier.getSelectedItem());
+        item.setSupplier((Supplier)supplierObject);
         item.setDateLastAdded(Date.from(Instant.now()));
 
         item.commit();
