@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.TypedQuery;
 import models.Category;
 import models.Supplier;
 import statics.Executor;
@@ -31,7 +30,6 @@ public class NewItemWindow extends UI {
     public NewItemWindow() {
         initComponents();
         Executor.put("addNewItem", CommandFactory.createAddItemCommand(this));
-        
     }
 
     /**
@@ -59,16 +57,18 @@ public class NewItemWindow extends UI {
         newCategory_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         name_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_label.setText("Name:");
 
         name_field.setName("name_field"); // NOI18N
-        name_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                name_fieldActionPerformed(evt);
-            }
-        });
 
         description_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         description_label.setText("Description:");
@@ -96,17 +96,8 @@ public class NewItemWindow extends UI {
         supplier_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         supplier_label.setText("Supplier:");
 
-        List<Supplier> supplierList = Database.getSupplierList();
-        supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        refreshSupplierList();
         supplier_combo.setName("supplier_combo"); // NOI18N
-        supplier_combo.addItem(new String("--- SELECT SUPPLIER ---"));
-        for(Supplier s : supplierList)
-        supplier_combo.addItem(s);
-        supplier_combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supplier_comboActionPerformed(evt);
-            }
-        });
 
         newSupplier_button.setText("New Supplier...");
         newSupplier_button.addActionListener(new java.awt.event.ActionListener() {
@@ -118,12 +109,8 @@ public class NewItemWindow extends UI {
         category_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         category_label.setText("Category:");
 
-        List<Category> categoryList = Database.getCategoryList();
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        refreshCategoryList();
         category_combo.setName("category_combo"); // NOI18N
-        category_combo.addItem(new String("--- SELECT CATEGORY ---"));
-        for(Category c : categoryList)
-        category_combo.addItem(c);
 
         newCategory_button.setText("New Category...");
         newCategory_button.addActionListener(new java.awt.event.ActionListener() {
@@ -212,10 +199,6 @@ public class NewItemWindow extends UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void name_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_name_fieldActionPerformed
-
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         try {
             Executor.execute("addNewItem");
@@ -223,27 +206,24 @@ public class NewItemWindow extends UI {
             Logger.getLogger(NewItemWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new AddWindow().setVisible(true);
     }//GEN-LAST:event_save_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new AddWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void newSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplier_buttonActionPerformed
-        this.dispose();
         new NewSupplierWindow().setVisible(true);
     }//GEN-LAST:event_newSupplier_buttonActionPerformed
 
     private void newCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCategory_buttonActionPerformed
-        this.dispose();
         new NewCategoryWindow().setVisible(true);
     }//GEN-LAST:event_newCategory_buttonActionPerformed
 
-    private void supplier_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_comboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supplier_comboActionPerformed
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshSupplierList();
+        refreshCategoryList();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -306,5 +286,25 @@ public class NewItemWindow extends UI {
         fields.put(supplier_combo.getName(), supplier_combo);
         fields.put(category_combo.getName(), category_combo);
         return fields;
+    }
+    
+    private void refreshSupplierList(){
+        List<Supplier> supplierList = Database.getSupplierList();
+        supplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
+
+        supplier_combo.setName("supplier_combo"); // NOI18N
+        supplier_combo.addItem("--- SELECT SUPPLIER ---");
+        for(Supplier s : supplierList)
+            supplier_combo.addItem(s);
+    }
+    
+    private void refreshCategoryList(){
+        List<Category> categoryList = Database.getCategoryList();
+        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
+
+        category_combo.setName("category_combo"); // NOI18N
+        category_combo.addItem("--- SELECT CATEGORY ---");
+        for(Category c : categoryList)
+            category_combo.addItem(c);
     }
 }

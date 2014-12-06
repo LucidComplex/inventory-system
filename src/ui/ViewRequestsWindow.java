@@ -115,7 +115,6 @@ public class ViewRequestsWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
-        new MainWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
 
@@ -200,6 +199,12 @@ public class ViewRequestsWindow extends UI {
                     "Requested Quantity"
                 }
             )
+            {
+                @Override
+                public boolean isCellEditable(int row, int column){
+                    return false;
+                }
+            }
         );
     }
 }

@@ -144,12 +144,10 @@ public class RemoveWindow extends UI {
             Logger.getLogger(RemoveWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_remove_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void removeItem_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_removeItem_comboItemStateChanged

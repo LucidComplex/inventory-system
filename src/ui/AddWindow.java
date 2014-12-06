@@ -50,15 +50,18 @@ public class AddWindow extends UI {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add");
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         itemname_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         itemname_label.setText("Item Name:");
 
-        List<Item> itemList = Database.getItemList();
-        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
-        itemName_combo.addItem(new String("--- SELECT ITEM ---"));
-        for(Item i : itemList)
-        itemName_combo.addItem(i);
+        refreshItemList();
         itemName_combo.setName("itemName_combo"); // NOI18N
 
         quantity_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,7 +153,6 @@ public class AddWindow extends UI {
 
     private void newItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItem_buttonActionPerformed
         new NewItemWindow().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_newItem_buttonActionPerformed
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
@@ -160,13 +162,15 @@ public class AddWindow extends UI {
             Logger.getLogger(AddWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshItemList();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -221,5 +225,13 @@ public class AddWindow extends UI {
         fields.put(itemName_combo.getName(), itemName_combo);
         fields.put(quantity_field.getName(), quantity_field);
         return fields;
+    }
+    
+    private void refreshItemList(){
+        List<Item> itemList = Database.getItemList();
+        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        itemName_combo.addItem("--- SELECT ITEM ---");
+        for(Item i : itemList)
+            itemName_combo.addItem(i);
     }
 }

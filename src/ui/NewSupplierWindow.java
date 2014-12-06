@@ -66,11 +66,6 @@ public class NewSupplierWindow extends UI {
         address_label.setText("Address");
 
         supplierName_field.setName("supplierName_field"); // NOI18N
-        supplierName_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supplierName_fieldActionPerformed(evt);
-            }
-        });
 
         street_label.setText("Street:");
 
@@ -225,10 +220,6 @@ public class NewSupplierWindow extends UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void supplierName_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierName_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supplierName_fieldActionPerformed
-
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
         try {
             // TODO add your handling code here:
@@ -237,12 +228,10 @@ public class NewSupplierWindow extends UI {
             Logger.getLogger(NewSupplierWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new NewItemWindow().setVisible(true);
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new NewItemWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     /**

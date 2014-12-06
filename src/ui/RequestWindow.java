@@ -152,17 +152,14 @@ public class RequestWindow extends UI {
             Logger.getLogger(RequestWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_request_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
         this.dispose();
-        new MainWindow().setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void newItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newItem_buttonActionPerformed
-        // TODO add your handling code here:
-        
+        new NewItemWindow().setVisible(true);
     }//GEN-LAST:event_newItem_buttonActionPerformed
 
     /**

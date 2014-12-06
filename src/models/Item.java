@@ -7,7 +7,6 @@ package models;
 
 import base.Commitable;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,11 +42,11 @@ public class Item extends Commitable implements Serializable {
     @Column(name="QUANTITY")
     private int quantity;
     
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name="SUPPLIER")
     private Supplier supplier;
     
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name="CATEGORY")
     private Category category;
     

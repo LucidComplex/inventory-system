@@ -53,6 +53,13 @@ public class MainWindow extends UI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory System");
         setName("Inventory System"); // NOI18N
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         search_field.setName("search_field"); // NOI18N
 
@@ -158,89 +165,66 @@ public class MainWindow extends UI {
                 .addGap(20, 20, 20))
         );
 
-        List<Item> itemList = Database.getItemList();
-        Object[][] tableContent = populateTable(itemList);
-        inventory_table.setModel(new javax.swing.table.DefaultTableModel(
-            tableContent,
-            new String[] {
-                "Name",
-                "Description",
-                "Quantity",
-                "Category",
-                "Supplier",
-                "Last Restocked"
-            }
-        )
-        {
-            @Override
-            public boolean isCellEditable(int row, int column){
-                return false;
-            }
-        }
-    );
-    inventory_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    inventory_table.setName("inventory_table"); // NOI18N
-    inventory_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-    jScrollPane1.setViewportView(inventory_table);
+        refreshTable();
+        inventory_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inventory_table.setName("inventory_table"); // NOI18N
+        inventory_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(inventory_table);
 
-    table_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    table_label.setText("Items Available");
+        table_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        table_label.setText("Items Available");
 
-    javax.swing.GroupLayout list_panelLayout = new javax.swing.GroupLayout(list_panel);
-    list_panel.setLayout(list_panelLayout);
-    list_panelLayout.setHorizontalGroup(
-        list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(list_panelLayout.createSequentialGroup()
-            .addGroup(list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-                .addComponent(table_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addContainerGap())
-    );
-    list_panelLayout.setVerticalGroup(
-        list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, list_panelLayout.createSequentialGroup()
-            .addContainerGap(47, Short.MAX_VALUE)
-            .addComponent(table_label)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-    );
+        javax.swing.GroupLayout list_panelLayout = new javax.swing.GroupLayout(list_panel);
+        list_panel.setLayout(list_panelLayout);
+        list_panelLayout.setHorizontalGroup(
+            list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(list_panelLayout.createSequentialGroup()
+                .addGroup(list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                    .addComponent(table_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        list_panelLayout.setVerticalGroup(
+            list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, list_panelLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(table_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(buttons_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(list_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(buttons_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(list_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(buttons_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-    );
+            .addComponent(list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
         new AddWindow().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_buttonActionPerformed
         new EditWindow().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_edit_buttonActionPerformed
 
     private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_buttonActionPerformed
         new RemoveWindow().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_remove_buttonActionPerformed
 
     private void request_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_buttonActionPerformed
         new RequestWindow().setVisible(true);        
-        this.dispose();
     }//GEN-LAST:event_request_buttonActionPerformed
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_buttonActionPerformed
@@ -255,8 +239,11 @@ public class MainWindow extends UI {
 
     private void viewRequests_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequests_buttonActionPerformed
         new ViewRequestsWindow().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_viewRequests_buttonActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshTable();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -330,5 +317,29 @@ public class MainWindow extends UI {
             content[i][5] = temp.getDateLastAdded();
         }
         return content;
+    }
+    
+    private void refreshTable(){
+        List<Item> itemList = Database.getItemList();
+        Object[][] tableContent = populateTable(itemList);
+        inventory_table.setModel(
+            new javax.swing.table.DefaultTableModel(
+                tableContent,
+                new String[] {
+                    "Name",
+                    "Description",
+                    "Quantity",
+                    "Category",
+                    "Supplier",
+                    "Last Restocked"
+                }
+            )
+            {
+                @Override
+                public boolean isCellEditable(int row, int column){
+                    return false;
+                }
+            }
+        );
     }
 }
