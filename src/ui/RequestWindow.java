@@ -49,7 +49,7 @@ public class RequestWindow extends UI {
         cancel_button = new javax.swing.JButton();
         newItem_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Request Item");
 
         itemname_label.setText("Item Name:");

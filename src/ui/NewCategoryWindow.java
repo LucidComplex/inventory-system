@@ -51,7 +51,7 @@ public class NewCategoryWindow extends UI {
         parentCategory_label = new javax.swing.JLabel();
         parentCategory_combo = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Category");
 
         categoryName_label.setText("Category Name:");
