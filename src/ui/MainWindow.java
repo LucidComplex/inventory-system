@@ -23,6 +23,7 @@ import statics.Executor;
  * @author MiriamMarie
  */
 public class MainWindow extends UI {
+    static UI add,remove,request,edit,viewRequest;
     EntityManager em;
     /**
      * Creates new form MainWindow
@@ -31,8 +32,16 @@ public class MainWindow extends UI {
         initComponents();
         Executor.put("search", CommandFactory.createSearchCommand(this));
         this.getRootPane().setDefaultButton(search_button);
+        initWindows();
     }
 
+    private void initWindows(){
+        add = new AddWindow();
+        remove = new RemoveWindow();
+        edit = new EditWindow();
+        request = new RequestWindow();
+        viewRequest = new ViewRequestsWindow();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,19 +228,31 @@ public class MainWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
-        new AddWindow().setVisible(true);
+        if(!add.isVisible())
+            add.setVisible(true);
+        add.setAlwaysOnTop(true);
+        add.setAlwaysOnTop(false);
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_buttonActionPerformed
-        new EditWindow().setVisible(true);
+        if(!edit.isVisible())
+            edit.setVisible(true);
+        edit.setAlwaysOnTop(true);
+        edit.setAlwaysOnTop(false);
     }//GEN-LAST:event_edit_buttonActionPerformed
 
     private void remove_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_buttonActionPerformed
-        new RemoveWindow().setVisible(true);
+        if(!remove.isVisible())
+            remove.setVisible(true);
+        remove.setAlwaysOnTop(true);
+        remove.setAlwaysOnTop(false);
     }//GEN-LAST:event_remove_buttonActionPerformed
 
     private void request_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_buttonActionPerformed
-        new RequestWindow().setVisible(true);        
+       if(!request.isVisible())
+            request.setVisible(true);
+        request.setAlwaysOnTop(true);
+        request.setAlwaysOnTop(false);        
     }//GEN-LAST:event_request_buttonActionPerformed
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_buttonActionPerformed
@@ -247,7 +268,10 @@ public class MainWindow extends UI {
     }//GEN-LAST:event_search_buttonActionPerformed
 
     private void viewRequests_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequests_buttonActionPerformed
-        new ViewRequestsWindow().setVisible(true);
+        if(!viewRequest.isVisible())
+            viewRequest.setVisible(true);
+        viewRequest.setAlwaysOnTop(true);
+        viewRequest.setAlwaysOnTop(false);
     }//GEN-LAST:event_viewRequests_buttonActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
