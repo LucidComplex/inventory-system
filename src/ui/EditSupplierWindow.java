@@ -65,7 +65,7 @@ public class EditSupplierWindow extends UI {
         email_radiobutton = new javax.swing.JRadioButton();
         email_field = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Supplier");
 
         editSupplier_label.setText("Choose Supplier to Edit:");
