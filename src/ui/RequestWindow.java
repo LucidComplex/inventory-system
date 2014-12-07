@@ -56,10 +56,8 @@ public class RequestWindow extends UI {
 
         quantity_label.setText("Quantity:");
 
-        List<Item> itemList = Database.getItemList();
+        refreshList();
         requestItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
-        for(Item i : itemList)
-        requestItem_combo.addItem(i);
         requestItem_combo.setName("requestItem_combo"); // NOI18N
 
         quantity_spinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
@@ -214,5 +212,13 @@ public class RequestWindow extends UI {
         fields.put(requestItem_combo.getName(), requestItem_combo);
         fields.put(quantity_spinner.getName(), quantity_spinner);
         return fields;
+    }
+    
+    private void refreshList(){
+        List<Item> itemList = Database.getItemList();
+        requestItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        requestItem_combo.addItem("--- SELECT ITEM ---");
+        for(Item i : itemList)
+            requestItem_combo.addItem(i);
     }
 }
