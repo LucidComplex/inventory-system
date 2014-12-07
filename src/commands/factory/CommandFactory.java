@@ -114,7 +114,21 @@ public class CommandFactory {
         return new AcceptRequestCommand(ui);
     }
     
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that rejects a request.
+     */
     public static Command createRejectRequestCommand(UI ui){
         return new RejectRequestCommand(ui);
+    }
+    
+    /**
+     * 
+     * @param ui the UI object to bind this command with.
+     * @return a command that searches for an item.
+     */
+    public static Command createSearchCommand(UI ui){
+        return new SearchCommand(ui);
     }
 }

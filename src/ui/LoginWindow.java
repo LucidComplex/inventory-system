@@ -28,6 +28,7 @@ public class LoginWindow extends UI {
         initComponents();
         initWindows();
         Executor.put("login", CommandFactory.createLoginCommand(this));
+        this.getRootPane().setDefaultButton(login_button);
     }
     
     private void initWindows(){

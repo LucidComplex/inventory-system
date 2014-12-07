@@ -7,11 +7,16 @@ package ui;
 
 import base.Database;
 import base.UI;
+import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import models.Item;
+import statics.Executor;
 
 /**
  *
@@ -24,6 +29,8 @@ public class MainWindow extends UI {
      */
     public MainWindow() {
         initComponents();
+        Executor.put("search", CommandFactory.createSearchCommand(this));
+        this.getRootPane().setDefaultButton(search_button);
     }
 
     /**
@@ -232,9 +239,11 @@ public class MainWindow extends UI {
     }//GEN-LAST:event_exit_buttonActionPerformed
 
     private void search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_buttonActionPerformed
-        String text = search_field.getText();
-        
-        //Create a performSearch method that searches the item using the variable text
+        try {
+            Executor.execute("search");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_search_buttonActionPerformed
 
     private void viewRequests_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequests_buttonActionPerformed
@@ -301,6 +310,7 @@ public class MainWindow extends UI {
     public Map getFields() {
         Map fields = new HashMap();
         fields.put(inventory_table.getName(), inventory_table);
+        fields.put(search_field.getName(), search_field);
         return fields;
     }
     
