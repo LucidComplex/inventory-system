@@ -13,18 +13,26 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import statics.Executor;
+import static ui.MainWindow.edit;
 
 /**
  *
  * @author MiriamMarie
  */
 public class EditWindow extends UI {
-
+    static UI supplier, item, category;
     /**
      * Creates new form EditWindow
      */
     public EditWindow() {
         initComponents();
+        initWindow();
+    }
+    
+    private void initWindow(){
+        supplier = new EditSupplierWindow();
+        item = new EditItemWindow();
+        category = new EditCategoryWindow();
     }
 
     /**
@@ -124,17 +132,26 @@ public class EditWindow extends UI {
 
     private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
         this.dispose();
-        new EditSupplierWindow().setVisible(true);
+        if(!edit.isVisible())
+            edit.setVisible(true);
+        edit.setAlwaysOnTop(true);
+        edit.setAlwaysOnTop(false);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed
         this.dispose();
-        new EditItemWindow().setVisible(true);
+        if(!item.isVisible())
+            item.setVisible(true);
+        item.setAlwaysOnTop(true);
+        item.setAlwaysOnTop(false);
     }//GEN-LAST:event_editItem_buttonActionPerformed
 
     private void editCategory_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCategory_buttonActionPerformed
         this.dispose();
-        new EditCategoryWindow().setVisible(true);
+        if(!category.isVisible())
+            category.setVisible(true);
+        category.setAlwaysOnTop(true);
+        category.setAlwaysOnTop(false);
     }//GEN-LAST:event_editCategory_buttonActionPerformed
 
     private void ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_buttonActionPerformed

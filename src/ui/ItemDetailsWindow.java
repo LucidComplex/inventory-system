@@ -5,17 +5,26 @@
  */
 package ui;
 
+import base.UI;
+import java.util.Map;
+
 /**
  *
  * @author MiriamMarie
  */
-public class ItemDetailsWindow extends javax.swing.JFrame {
-
+public class ItemDetailsWindow extends UI {
+    UI supplier, category;
     /**
      * Creates new form ItemDetailsWindow
      */
     public ItemDetailsWindow() {
         initComponents();
+        initWindow();
+    }
+    
+    private void initWindow(){
+        supplier = new SupplierDetailsWindow();
+        category = new CategoryDetailsWindow();
     }
 
     /**
@@ -94,6 +103,11 @@ public class ItemDetailsWindow extends javax.swing.JFrame {
         category_button.setText("More...");
         category_button.setBorder(null);
         category_button.setName("category_button"); // NOI18N
+        category_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                category_buttonActionPerformed(evt);
+            }
+        });
 
         close_button.setText("Close");
         close_button.setName("close_button"); // NOI18N
@@ -181,12 +195,24 @@ public class ItemDetailsWindow extends javax.swing.JFrame {
 
     private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
         // TODO add your handling code here:
+        if(!supplier.isVisible())
+            supplier.setVisible(true);
+        supplier.setAlwaysOnTop(true);
+        supplier.setAlwaysOnTop(false);
     }//GEN-LAST:event_supplier_buttonActionPerformed
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
+
+    private void category_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_category_buttonActionPerformed
+        // TODO add your handling code here:
+        if(!category.isVisible())
+            category.setVisible(true);
+        category.setAlwaysOnTop(true);
+        category.setAlwaysOnTop(false);
+    }//GEN-LAST:event_category_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,4 +264,9 @@ public class ItemDetailsWindow extends javax.swing.JFrame {
     private javax.swing.JLabel supplier_details;
     private javax.swing.JLabel supplier_label;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Map getFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
