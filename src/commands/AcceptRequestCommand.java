@@ -6,8 +6,13 @@
 package commands;
 
 import base.Command;
+import base.Database;
 import base.UI;
 import exceptions.ExecutorException;
+import java.util.List;
+import models.Item;
+import models.PurchaseRequest;
+import javax.swing.JTable;
 
 /**
  *
@@ -22,7 +27,17 @@ public class AcceptRequestCommand extends Command {
 
     @Override
     public void execute() throws ExecutorException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JTable requestTable = (JTable) fields.get("request_table");
+        List<PurchaseRequest> requestList = Database.getRequestList();
+        PurchaseRequest request = requestList.get(requestTable.getSelectedRow());
+        
+        Item requestedItem = request.getRequestedItem();
+        int requestedQuantity = request.getRequestedQuantity();
+        
+        requestedItem.incQuantity(requestedQuantity);
+        requestedItem.update();
+        
+        request.delete();
     }
     
 }

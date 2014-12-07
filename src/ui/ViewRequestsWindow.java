@@ -57,6 +57,11 @@ public class ViewRequestsWindow extends UI {
 
         accept_button.setText("Accept");
         accept_button.setName("accept_button"); // NOI18N
+        accept_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accept_buttonActionPerformed(evt);
+            }
+        });
 
         reject_button.setText("Reject");
         reject_button.setName("reject_button"); // NOI18N
@@ -126,6 +131,15 @@ public class ViewRequestsWindow extends UI {
         }
         refreshTable();
     }//GEN-LAST:event_reject_buttonActionPerformed
+
+    private void accept_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accept_buttonActionPerformed
+        try {
+            Executor.execute("accept");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(ViewRequestsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        refreshTable();
+    }//GEN-LAST:event_accept_buttonActionPerformed
 
     /**
      * @param args the command line arguments
