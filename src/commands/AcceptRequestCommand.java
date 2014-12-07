@@ -27,7 +27,7 @@ public class AcceptRequestCommand extends Command {
 
     @Override
     public void execute() throws ExecutorException {
-        JTable requestTable = (JTable) fields.get("request_table");
+        JTable requestTable = (JTable) fields.get("requests_table");
         List<PurchaseRequest> requestList = Database.getRequestList();
         PurchaseRequest request = requestList.get(requestTable.getSelectedRow());
         
