@@ -5,11 +5,15 @@
  */
 package ui;
 
+import base.UI;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author MiriamMarie
  */
-public class EditCategoryWindow extends javax.swing.JFrame {
+public class EditCategoryWindow extends UI{
 
     /**
      * Creates new form EditCategoryWindow
@@ -47,6 +51,11 @@ public class EditCategoryWindow extends javax.swing.JFrame {
 
         category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         category_combo.setName("category_combo"); // NOI18N
+        category_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                category_comboActionPerformed(evt);
+            }
+        });
 
         editName_radiobutton.setText("Edit Category Name:");
         editName_radiobutton.setName("editName_radiobutton"); // NOI18N
@@ -182,6 +191,10 @@ public class EditCategoryWindow extends javax.swing.JFrame {
         else editParent_combo.setEnabled(false);
     }//GEN-LAST:event_editParent_radiobuttonActionPerformed
 
+    private void category_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_category_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_category_comboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,4 +244,15 @@ public class EditCategoryWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton ok_button;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Map getFields() {
+        Map fields = new HashMap();
+        
+        fields.put(editParent_combo.getName(), editParent_combo);
+        fields.put(editName_field.getName(), editName_field);
+        fields.put(editDescription_field.getName(), editDescription_field);
+        
+        return fields;
+    }
 }
