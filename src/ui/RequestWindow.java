@@ -66,6 +66,11 @@ public class RequestWindow extends UI {
         refreshList();
         requestItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
         requestItem_combo.setName("requestItem_combo"); // NOI18N
+        requestItem_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestItem_comboActionPerformed(evt);
+            }
+        });
 
         quantity_spinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         quantity_spinner.setName("quantity_field"); // NOI18N
@@ -170,6 +175,10 @@ public class RequestWindow extends UI {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         refreshList();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void requestItem_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestItem_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_requestItem_comboActionPerformed
 
     /**
      * @param args the command line arguments
