@@ -132,10 +132,10 @@ public class EditWindow extends UI {
 
     private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
         this.dispose();
-        if(!edit.isVisible())
-            edit.setVisible(true);
-        edit.setAlwaysOnTop(true);
-        edit.setAlwaysOnTop(false);
+        if(!supplier.isVisible())
+            supplier.setVisible(true);
+        supplier.setAlwaysOnTop(true);
+        supplier.setAlwaysOnTop(false);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed
