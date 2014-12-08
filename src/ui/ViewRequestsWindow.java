@@ -50,9 +50,11 @@ public class ViewRequestsWindow extends UI {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Requests");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
 
@@ -146,9 +148,9 @@ public class ViewRequestsWindow extends UI {
         refreshTable();
     }//GEN-LAST:event_accept_buttonActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         refreshTable();
-    }//GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments

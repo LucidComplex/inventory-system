@@ -12,6 +12,8 @@ import exceptions.ExecutorException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -185,6 +187,11 @@ public class MainWindow extends UI {
         inventory_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inventory_table.setName("inventory_table"); // NOI18N
         inventory_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        inventory_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inventory_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(inventory_table);
 
         table_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -277,6 +284,27 @@ public class MainWindow extends UI {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         refreshTable();
     }//GEN-LAST:event_formWindowGainedFocus
+    
+    boolean clicked;
+    private void inventory_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventory_tableMouseClicked
+        if(clicked){
+            clicked = false;
+            System.out.println("yay");
+        }
+        else{
+            clicked = true;
+            Timer t = new Timer("doubleClickTimer", false);
+            t.schedule(
+                new TimerTask(){
+                    @Override
+                    public void run(){
+                        clicked = false;
+                    }
+                },
+                500
+            );
+        }
+    }//GEN-LAST:event_inventory_tableMouseClicked
 
     /**
      * @param args the command line arguments
