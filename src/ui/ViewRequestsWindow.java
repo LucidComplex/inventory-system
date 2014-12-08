@@ -50,6 +50,11 @@ public class ViewRequestsWindow extends UI {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Requests");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         refreshTable();
         requests_table.setName("requests_table"); // NOI18N
@@ -140,6 +145,10 @@ public class ViewRequestsWindow extends UI {
         }
         refreshTable();
     }//GEN-LAST:event_accept_buttonActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        refreshTable();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
