@@ -53,7 +53,6 @@ public class EditCategoryWindow extends UI{
         category_label.setText("Choose Category to Edit:");
 
         refreshList();
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
         category_combo.setName("category_combo"); // NOI18N
         category_combo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -101,7 +100,6 @@ public class EditCategoryWindow extends UI{
         });
 
         refreshParentList();
-        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel());
         editParent_combo.setEnabled(false);
         editParent_combo.setName("editParent_combo"); // NOI18N
 
@@ -286,6 +284,11 @@ public class EditCategoryWindow extends UI{
     }
     
     private void refreshParentList(){
-        
+        List<Category> categoryList = Database.getCategoryList();
+        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        editParent_combo.addItem("--- SELECT PARENT CATEGORY ---");
+        for(Category s : categoryList)
+            editParent_combo.addItem(s);
+        editParent_combo.remove(categoryList.indexOf(category_combo.getSelectedItem()) + 1);
     }
 }
