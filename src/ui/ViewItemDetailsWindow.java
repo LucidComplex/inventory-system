@@ -5,8 +5,11 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
+import java.util.List;
 import java.util.Map;
+import models.Item;
 
 /**
  *
@@ -14,17 +17,34 @@ import java.util.Map;
  */
 public class ViewItemDetailsWindow extends UI {
     UI supplier, category;
+    Item selectedItem;
+    
     /**
      * Creates new form ItemDetailsWindow
+     * @param selectedRow the selected row index in the table
      */
-    public ViewItemDetailsWindow() {
+    public ViewItemDetailsWindow(int selectedRow) {
         initComponents();
+        setSelectedItem(selectedRow);
         initWindow();
+        initText();
+    }
+    
+    private void initText(){
+        name_details.setText(selectedItem.getName());
+        description_details.setText(selectedItem.getDescription());
+        supplier_details.setText(selectedItem.getSupplier().getName());
+        category_details.setText(selectedItem.getCategory().getName());
+    }
+    
+    private void setSelectedItem(int selectedRow){
+        List<Item> itemList = Database.getItemList();
+        selectedItem = itemList.get(selectedRow);
     }
     
     private void initWindow(){
-        supplier = new ViewSupplierDetailsWindow();
-        category = new ViewCategoryDetailsWindow();
+        supplier = new ViewSupplierDetailsWindow(selectedItem);
+        category = new ViewCategoryDetailsWindow(selectedItem);
     }
 
     /**
@@ -194,7 +214,6 @@ public class ViewItemDetailsWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
-        // TODO add your handling code here:
         if(!supplier.isVisible())
             supplier.setVisible(true);
         supplier.setAlwaysOnTop(true);
@@ -241,13 +260,6 @@ public class ViewItemDetailsWindow extends UI {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewItemDetailsWindow().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,18 +7,30 @@ package ui;
 
 import base.UI;
 import java.util.Map;
+import models.Category;
+import models.Item;
 
 /**
  *
  * @author MiriamMarie
  */
 public class ViewCategoryDetailsWindow extends UI{
-
+    Item selectedItem;
+    
     /**
      * Creates new form CategoryDetailsWindow
      */
-    public ViewCategoryDetailsWindow() {
+    public ViewCategoryDetailsWindow(Item i) {
         initComponents();
+        selectedItem = i;
+        initText();
+    }
+    
+    private void initText(){
+        Category category = selectedItem.getCategory();
+        category_details.setText(category.getDescription());
+        name_details.setText(category.getName());
+        parent_details.setText(category.getParentcategory().getName());
     }
 
     /**
@@ -34,8 +46,8 @@ public class ViewCategoryDetailsWindow extends UI{
         name_label = new javax.swing.JLabel();
         name_details = new javax.swing.JLabel();
         description_label = new javax.swing.JLabel();
-        category_details = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        JScrollPane1 = new javax.swing.JScrollPane();
+        category_details = new javax.swing.JTextArea();
         parent_label = new javax.swing.JLabel();
         parent_details = new javax.swing.JLabel();
         close_button = new javax.swing.JButton();
@@ -56,14 +68,14 @@ public class ViewCategoryDetailsWindow extends UI{
         description_label.setText("Category Description:");
         description_label.setName("description_label"); // NOI18N
 
-        category_details.setName("category_details"); // NOI18N
+        JScrollPane1.setName("JScrollPane1"); // NOI18N
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        category_details.setViewportView(jTextArea1);
+        category_details.setEditable(false);
+        category_details.setColumns(20);
+        category_details.setLineWrap(true);
+        category_details.setRows(5);
+        category_details.setName("category_details"); // NOI18N
+        JScrollPane1.setViewportView(category_details);
 
         parent_label.setText("Parent Category:");
         parent_label.setName("parent_label"); // NOI18N
@@ -74,6 +86,11 @@ public class ViewCategoryDetailsWindow extends UI{
 
         close_button.setText("Close");
         close_button.setName("close_button"); // NOI18N
+        close_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                close_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout categoryDetails_panelLayout = new javax.swing.GroupLayout(categoryDetails_panel);
         categoryDetails_panel.setLayout(categoryDetails_panelLayout);
@@ -94,7 +111,7 @@ public class ViewCategoryDetailsWindow extends UI{
                         .addGroup(categoryDetails_panelLayout.createSequentialGroup()
                             .addComponent(description_label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(category_details)))
+                            .addComponent(JScrollPane1)))
                     .addComponent(close_button, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -108,7 +125,7 @@ public class ViewCategoryDetailsWindow extends UI{
                 .addGap(18, 18, 18)
                 .addGroup(categoryDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(description_label)
-                    .addComponent(category_details, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(categoryDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(parent_label)
@@ -131,6 +148,10 @@ public class ViewCategoryDetailsWindow extends UI{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_close_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,20 +181,14 @@ public class ViewCategoryDetailsWindow extends UI{
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewCategoryDetailsWindow().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane JScrollPane1;
     private javax.swing.JPanel categoryDetails_panel;
-    private javax.swing.JScrollPane category_details;
+    private javax.swing.JTextArea category_details;
     private javax.swing.JButton close_button;
     private javax.swing.JLabel description_label;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel name_details;
     private javax.swing.JLabel name_label;
     private javax.swing.JLabel parent_details;

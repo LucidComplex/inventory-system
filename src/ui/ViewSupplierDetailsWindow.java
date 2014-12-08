@@ -7,18 +7,39 @@ package ui;
 
 import base.UI;
 import java.util.Map;
+import models.Address;
+import models.Contact;
+import models.Item;
+import models.Supplier;
 
 /**
  *
  * @author MiriamMarie
  */
 public class ViewSupplierDetailsWindow extends UI {
-
+    Item selectedItem;
+    
     /**
      * Creates new form SupplierDetailsWindow
      */
-    public ViewSupplierDetailsWindow() {
+    public ViewSupplierDetailsWindow(Item i) {
         initComponents();
+        selectedItem = i;
+        initText();
+    }
+    
+    private void initText(){
+        Supplier supplier = selectedItem.getSupplier();
+        Address address = supplier.getAddress();
+        Contact contact = supplier.getContact();
+        city_details.setText(address.getCity());
+        contact_details.setText(contact.getNumber());
+        country_details.setText(address.getCountry());
+        email_details.setText(contact.getEmail());
+        name_details.setText(supplier.getName());
+        province_details.setText(address.getProvince());
+        street_details.setText(address.getStreet());
+        zipcode_details.setText(address.getZipcode());
     }
 
     /**
@@ -230,7 +251,7 @@ public class ViewSupplierDetailsWindow extends UI {
     }// </editor-fold>//GEN-END:initComponents
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
 
     /**
@@ -260,13 +281,6 @@ public class ViewSupplierDetailsWindow extends UI {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewSupplierDetailsWindow().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -25,7 +25,7 @@ import statics.Executor;
  * @author MiriamMarie
  */
 public class MainWindow extends UI {
-    static UI add,remove,request,edit,viewRequest;
+    static UI add, remove, request, edit, viewRequest;
     EntityManager em;
     /**
      * Creates new form MainWindow
@@ -287,9 +287,10 @@ public class MainWindow extends UI {
     
     boolean clicked;
     private void inventory_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventory_tableMouseClicked
+        // double click event handling
         if(clicked){
             clicked = false;
-            System.out.println("yay");
+            new ViewItemDetailsWindow(inventory_table.getSelectedRow()).setVisible(true);
         }
         else{
             clicked = true;
@@ -301,7 +302,7 @@ public class MainWindow extends UI {
                         clicked = false;
                     }
                 },
-                500
+                300
             );
         }
     }//GEN-LAST:event_inventory_tableMouseClicked
