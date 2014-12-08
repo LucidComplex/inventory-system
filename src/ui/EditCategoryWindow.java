@@ -286,6 +286,11 @@ public class EditCategoryWindow extends UI{
     }
     
     private void refreshParentList(){
-        
+        List<Category> categoryList = Database.getCategoryList();
+        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        editParent_combo.addItem("--- SELECT PARENT CATEGORY ---");
+        for(Category s : categoryList)
+            editParent_combo.addItem(s);
+        editParent_combo.remove(categoryList.indexOf(category_combo.getSelectedItem()) + 1);
     }
 }

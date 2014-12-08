@@ -155,7 +155,6 @@ public class EditWindow extends UI {
     }//GEN-LAST:event_editCategory_buttonActionPerformed
 
     private void ok_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_buttonActionPerformed
-        new MainWindow().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ok_buttonActionPerformed
     /**
