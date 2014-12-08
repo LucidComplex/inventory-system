@@ -8,9 +8,12 @@ package ui;
 import base.Database;
 import base.UI;
 import commands.factory.CommandFactory;
+import exceptions.ExecutorException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Category;
 import models.Item;
 import models.Supplier;
@@ -239,7 +242,11 @@ public class EditItemWindow extends UI {
     }//GEN-LAST:event_itemDescription_radiobuttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Executor.execute("editItem");
+        } catch (ExecutorException ex) {
+            Logger.getLogger(EditItemWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_save_buttonActionPerformed
 
@@ -249,7 +256,7 @@ public class EditItemWindow extends UI {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void itemSupplier_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupplier_radiobuttonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_itemSupplier_radiobuttonActionPerformed
 
     private void itemCategory_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategory_radiobuttonActionPerformed

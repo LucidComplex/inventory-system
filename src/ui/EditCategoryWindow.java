@@ -5,9 +5,12 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import models.Category;
 
 /**
  *
@@ -49,8 +52,14 @@ public class EditCategoryWindow extends UI{
 
         category_label.setText("Choose Category to Edit:");
 
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        refreshList();
+        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
         category_combo.setName("category_combo"); // NOI18N
+        category_combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                category_comboItemStateChanged(evt);
+            }
+        });
         category_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 category_comboActionPerformed(evt);
@@ -91,7 +100,8 @@ public class EditCategoryWindow extends UI{
             }
         });
 
-        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        refreshParentList();
+        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel());
         editParent_combo.setEnabled(false);
         editParent_combo.setName("editParent_combo"); // NOI18N
 
@@ -195,6 +205,17 @@ public class EditCategoryWindow extends UI{
         // TODO add your handling code here:
     }//GEN-LAST:event_category_comboActionPerformed
 
+    private void category_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_category_comboItemStateChanged
+        // TODO add your handling code here: 
+        Object selectedObject = category_combo.getSelectedItem();
+        if(selectedObject instanceof String)
+            return;
+        Category selectedCategory = (Category) selectedObject;
+        editName_field.setText(editName_field.getText());
+        editDescription_field.setText(editDescription_field.getText());
+        editParent_combo.setSelectedItem(selectedCategory.getParentcategory());
+    }//GEN-LAST:event_category_comboItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -254,5 +275,17 @@ public class EditCategoryWindow extends UI{
         fields.put(editDescription_field.getName(), editDescription_field);
         
         return fields;
+    }
+    
+    private void refreshList(){
+        List<Category> categoryList = Database.getCategoryList();
+        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        category_combo.addItem("--- SELECT CATEGORY ---");
+        for(Category s : categoryList)
+            category_combo.addItem(s);
+    }
+    
+    private void refreshParentList(){
+        
     }
 }

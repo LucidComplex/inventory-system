@@ -12,12 +12,12 @@ import java.util.Map;
  *
  * @author MiriamMarie
  */
-public class SupplierDetailsWindow extends UI {
+public class ViewSupplierDetailsWindow extends UI {
 
     /**
      * Creates new form SupplierDetailsWindow
      */
-    public SupplierDetailsWindow() {
+    public ViewSupplierDetailsWindow() {
         initComponents();
     }
 
@@ -250,20 +250,21 @@ public class SupplierDetailsWindow extends UI {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSupplierDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SupplierDetailsWindow().setVisible(true);
+                new ViewSupplierDetailsWindow().setVisible(true);
             }
         });
     }

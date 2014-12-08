@@ -12,19 +12,19 @@ import java.util.Map;
  *
  * @author MiriamMarie
  */
-public class ItemDetailsWindow extends UI {
+public class ViewItemDetailsWindow extends UI {
     UI supplier, category;
     /**
      * Creates new form ItemDetailsWindow
      */
-    public ItemDetailsWindow() {
+    public ViewItemDetailsWindow() {
         initComponents();
         initWindow();
     }
     
     private void initWindow(){
-        supplier = new SupplierDetailsWindow();
-        category = new CategoryDetailsWindow();
+        supplier = new ViewSupplierDetailsWindow();
+        category = new ViewCategoryDetailsWindow();
     }
 
     /**
@@ -231,20 +231,21 @@ public class ItemDetailsWindow extends UI {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewItemDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ItemDetailsWindow().setVisible(true);
+                new ViewItemDetailsWindow().setVisible(true);
             }
         });
     }

@@ -12,12 +12,12 @@ import java.util.Map;
  *
  * @author MiriamMarie
  */
-public class CategoryDetailsWindow extends UI{
+public class ViewCategoryDetailsWindow extends UI{
 
     /**
      * Creates new form CategoryDetailsWindow
      */
-    public CategoryDetailsWindow() {
+    public ViewCategoryDetailsWindow() {
         initComponents();
     }
 
@@ -149,20 +149,21 @@ public class CategoryDetailsWindow extends UI{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCategoryDetailsWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CategoryDetailsWindow().setVisible(true);
+                new ViewCategoryDetailsWindow().setVisible(true);
             }
         });
     }
