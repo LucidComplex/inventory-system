@@ -321,6 +321,10 @@ public class EditItemWindow extends UI {
         fields.put(itemDescription_field.getName(), itemDescription_field);
         fields.put(itemName_field.getName(), itemName_field);
         fields.put(itemName_combo.getName(), itemName_combo);
+        fields.put(itemCategory_radiobutton.getName(), itemCategory_radiobutton);
+        fields.put(itemDescription_radiobutton.getName(), itemDescription_radiobutton);
+        fields.put(itemName_radiobutton.getName(), itemName_radiobutton);
+        fields.put(itemSupplier_radiobutton.getName(), itemSupplier_radiobutton);
         return fields;
     }
 }
