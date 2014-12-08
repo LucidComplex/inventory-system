@@ -134,6 +134,7 @@ public class EditItemWindow extends UI {
         itemSupplier_combo.addItem(new String("--- SELECT ITEM ---"));
         for(Supplier s : supplierList)
         itemSupplier_combo.addItem(s);
+        itemSupplier_combo.setEnabled(false);
         itemSupplier_combo.setName("itemSupplier_combo"); // NOI18N
 
         List<Category> categoryList = Database.getCategoryList();
@@ -141,6 +142,7 @@ public class EditItemWindow extends UI {
         itemCategory_combo.addItem(new String("--- SELECT CATEGORY ---"));
         for(Category c : categoryList)
         itemCategory_combo.addItem(c);
+        itemCategory_combo.setEnabled(false);
         itemCategory_combo.setName("itemCategory_combo"); // NOI18N
 
         javax.swing.GroupLayout editItem_panelLayout = new javax.swing.GroupLayout(editItem_panel);
@@ -256,11 +258,16 @@ public class EditItemWindow extends UI {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void itemSupplier_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupplier_radiobuttonActionPerformed
-        
+        if(itemSupplier_radiobutton.isSelected())
+            itemSupplier_combo.setEnabled(true);
+        else itemSupplier_combo.setEnabled(false);
     }//GEN-LAST:event_itemSupplier_radiobuttonActionPerformed
 
     private void itemCategory_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategory_radiobuttonActionPerformed
         // TODO add your handling code here:
+        if(itemCategory_radiobutton.isSelected())
+            itemCategory_combo.setEnabled(true);
+        else itemCategory_combo.setEnabled(false);
     }//GEN-LAST:event_itemCategory_radiobuttonActionPerformed
 
     /**
@@ -321,6 +328,7 @@ public class EditItemWindow extends UI {
         fields.put(itemDescription_field.getName(), itemDescription_field);
         fields.put(itemName_field.getName(), itemName_field);
         fields.put(itemName_combo.getName(), itemName_combo);
+
         return fields;
     }
 }

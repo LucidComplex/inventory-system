@@ -36,7 +36,7 @@ public class ViewItemDetailsWindow extends UI {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        viewItemDetails_panel = new javax.swing.JPanel();
         name_label = new javax.swing.JLabel();
         description_label = new javax.swing.JLabel();
         supplier_label = new javax.swing.JLabel();
@@ -46,15 +46,15 @@ public class ViewItemDetailsWindow extends UI {
         description_details = new javax.swing.JTextArea();
         supplier_details = new javax.swing.JLabel();
         category_details = new javax.swing.JLabel();
+        close_button = new javax.swing.JButton();
         supplier_button = new javax.swing.JButton();
         category_button = new javax.swing.JButton();
-        close_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Item Details");
         setName("Form"); // NOI18N
 
-        jPanel1.setName("jPanel1"); // NOI18N
+        viewItemDetails_panel.setName("viewItemDetails_panel"); // NOI18N
 
         name_label.setText("Name:");
         name_label.setName("name_label"); // NOI18N
@@ -87,28 +87,6 @@ public class ViewItemDetailsWindow extends UI {
         category_details.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         category_details.setName("category_details"); // NOI18N
 
-        supplier_button.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        supplier_button.setForeground(new java.awt.Color(0, 51, 153));
-        supplier_button.setText("More...");
-        supplier_button.setBorder(null);
-        supplier_button.setName("supplier_button"); // NOI18N
-        supplier_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supplier_buttonActionPerformed(evt);
-            }
-        });
-
-        category_button.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        category_button.setForeground(new java.awt.Color(0, 51, 153));
-        category_button.setText("More...");
-        category_button.setBorder(null);
-        category_button.setName("category_button"); // NOI18N
-        category_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                category_buttonActionPerformed(evt);
-            }
-        });
-
         close_button.setText("Close");
         close_button.setName("close_button"); // NOI18N
         close_button.addActionListener(new java.awt.event.ActionListener() {
@@ -117,102 +95,105 @@ public class ViewItemDetailsWindow extends UI {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(close_button, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+        supplier_button.setText("More...");
+        supplier_button.setName("supplier_button"); // NOI18N
+        supplier_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplier_buttonActionPerformed(evt);
+            }
+        });
+
+        category_button.setText("More...");
+        category_button.setName("category_button"); // NOI18N
+
+        javax.swing.GroupLayout viewItemDetails_panelLayout = new javax.swing.GroupLayout(viewItemDetails_panel);
+        viewItemDetails_panel.setLayout(viewItemDetails_panelLayout);
+        viewItemDetails_panelLayout.setHorizontalGroup(
+            viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
+                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
+                        .addComponent(close_button, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
+                        .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
                                 .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(name_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(supplier_label, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                                     .addComponent(category_label, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewItemDetails_panelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(description_label, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(name_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(name_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                            .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
+                                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(supplier_details, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(category_details, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(supplier_button, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(category_button, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(supplier_button)
+                                    .addComponent(category_button))))))
+                .addGap(30, 30, 30))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        viewItemDetails_panelLayout.setVerticalGroup(
+            viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(name_label)
                     .addComponent(name_details, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(description_label))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(supplier_details, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(supplier_label))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(supplier_button)
-                        .addGap(12, 12, 12)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(category_button)
-                    .addComponent(category_label)
-                    .addComponent(category_details, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(supplier_label)
+                    .addComponent(supplier_details, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(supplier_button))
+                .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewItemDetails_panelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(viewItemDetails_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(category_label)
+                            .addComponent(category_details, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewItemDetails_panelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(category_button)))
                 .addGap(28, 28, 28)
                 .addComponent(close_button)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewItemDetails_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewItemDetails_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
-        // TODO add your handling code here:
-        if(!supplier.isVisible())
-            supplier.setVisible(true);
-        supplier.setAlwaysOnTop(true);
-        supplier.setAlwaysOnTop(false);
-    }//GEN-LAST:event_supplier_buttonActionPerformed
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
 
-    private void category_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_category_buttonActionPerformed
+    private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
         // TODO add your handling code here:
-        if(!category.isVisible())
-            category.setVisible(true);
-        category.setAlwaysOnTop(true);
-        category.setAlwaysOnTop(false);
-    }//GEN-LAST:event_category_buttonActionPerformed
+        
+    }//GEN-LAST:event_supplier_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,13 +238,13 @@ public class ViewItemDetailsWindow extends UI {
     private javax.swing.JButton close_button;
     private javax.swing.JTextArea description_details;
     private javax.swing.JLabel description_label;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel name_details;
     private javax.swing.JLabel name_label;
     private javax.swing.JButton supplier_button;
     private javax.swing.JLabel supplier_details;
     private javax.swing.JLabel supplier_label;
+    private javax.swing.JPanel viewItemDetails_panel;
     // End of variables declaration//GEN-END:variables
 
     @Override
