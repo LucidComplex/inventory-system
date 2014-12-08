@@ -59,18 +59,10 @@ public class EditItemWindow extends UI {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Item");
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
 
         item_label.setText("Choose Item to Edit:");
 
-        List<Item> itemList = Database.getItemList();
-        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
-        for(Item i : itemList)
-        itemName_combo.addItem(i);
+        refreshItemList();
         itemName_combo.setName("itemName_combo"); // NOI18N
 
         itemName_radiobutton.setLabel("Edit Item Name:");
@@ -115,19 +107,9 @@ public class EditItemWindow extends UI {
 
         itemSupplier_radiobutton.setText("Edit Supplier:");
         itemSupplier_radiobutton.setName("itemSupplier_radiobutton"); // NOI18N
-        itemSupplier_radiobutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemSupplier_radiobuttonActionPerformed(evt);
-            }
-        });
 
         itemCategory_radiobutton.setText("Edit Category:");
         itemCategory_radiobutton.setName("itemCategory_radiobutton"); // NOI18N
-        itemCategory_radiobutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCategory_radiobuttonActionPerformed(evt);
-            }
-        });
 
         List<Supplier> supplierList = Database.getSupplierList();
         itemSupplier_combo.setModel(new javax.swing.DefaultComboBoxModel());
@@ -230,12 +212,7 @@ public class EditItemWindow extends UI {
         else itemName_field.setEnabled(false);
     }//GEN-LAST:event_itemName_radiobuttonActionPerformed
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formComponentShown
-
     private void itemDescription_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDescription_radiobuttonActionPerformed
-        // TODO add your handling code here:
         if(itemDescription_radiobutton.isSelected())
             itemDescription_field.setEnabled(true);
         else itemDescription_field.setEnabled(false);
@@ -251,17 +228,8 @@ public class EditItemWindow extends UI {
     }//GEN-LAST:event_save_buttonActionPerformed
 
     private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
-
-    private void itemSupplier_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupplier_radiobuttonActionPerformed
-        
-    }//GEN-LAST:event_itemSupplier_radiobuttonActionPerformed
-
-    private void itemCategory_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategory_radiobuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemCategory_radiobuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,10 +289,20 @@ public class EditItemWindow extends UI {
         fields.put(itemDescription_field.getName(), itemDescription_field);
         fields.put(itemName_field.getName(), itemName_field);
         fields.put(itemName_combo.getName(), itemName_combo);
+        fields.put(itemSupplier_combo.getName(), itemSupplier_combo);
+        fields.put(itemCategory_combo.getName(), itemCategory_combo);
         fields.put(itemCategory_radiobutton.getName(), itemCategory_radiobutton);
         fields.put(itemDescription_radiobutton.getName(), itemDescription_radiobutton);
         fields.put(itemName_radiobutton.getName(), itemName_radiobutton);
         fields.put(itemSupplier_radiobutton.getName(), itemSupplier_radiobutton);
         return fields;
+    }
+    
+    private void refreshItemList(){
+        List<Item> itemList = Database.getItemList();
+        itemName_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        itemName_combo.addItem("--- SELECT ITEM ---");
+        for(Item i : itemList)
+            itemName_combo.addItem(i);
     }
 }

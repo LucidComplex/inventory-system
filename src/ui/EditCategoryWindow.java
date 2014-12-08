@@ -53,7 +53,6 @@ public class EditCategoryWindow extends UI{
         category_label.setText("Choose Category to Edit:");
 
         refreshList();
-        category_combo.setModel(new javax.swing.DefaultComboBoxModel());
         category_combo.setName("category_combo"); // NOI18N
         category_combo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -101,7 +100,6 @@ public class EditCategoryWindow extends UI{
         });
 
         refreshParentList();
-        editParent_combo.setModel(new javax.swing.DefaultComboBoxModel());
         editParent_combo.setEnabled(false);
         editParent_combo.setName("editParent_combo"); // NOI18N
 

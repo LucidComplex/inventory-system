@@ -115,9 +115,6 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="category_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="category_combo" noResource="true"/>
           </Properties>
           <Events>
@@ -181,9 +178,6 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="editParent_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
-            </Property>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="editParent_combo" noResource="true"/>
           </Properties>
