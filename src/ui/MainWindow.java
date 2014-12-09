@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import models.Item;
+import models.Monkey;
 import statics.Executor;
 
 /**
@@ -27,10 +28,12 @@ import statics.Executor;
 public class MainWindow extends UI {
     static UI add, remove, request, edit, viewRequest;
     EntityManager em;
+    Monkey user;
     /**
      * Creates new form MainWindow
      */
-    public MainWindow() {
+    public MainWindow(Monkey u) {
+        user = u;
         initComponents();
         Executor.put("search", CommandFactory.createSearchCommand(this));
         this.getRootPane().setDefaultButton(search_button);
@@ -183,6 +186,11 @@ public class MainWindow extends UI {
                 .addGap(20, 20, 20))
         );
 
+        if(!user.isHead())
+        add_button.setEnabled(false);
+        if(!user.isHead())
+        viewRequests_button.setEnabled(false);
+
         refreshTable();
         inventory_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inventory_table.setName("inventory_table"); // NOI18N
@@ -307,40 +315,6 @@ public class MainWindow extends UI {
         }
     }//GEN-LAST:event_inventory_tableMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_button;

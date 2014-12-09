@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import models.Monkey;
+import ui.MainWindow;
 
 /**
  *
@@ -35,19 +36,19 @@ public class LoginCommand extends Command {
         
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
-        login(username, password);
+        new MainWindow(login(username, password)).setVisible(true);
     }
     
-    private void login(String username, String password) throws ExecutorException {
+    private Monkey login(String username, String password) throws ExecutorException {
         EntityManager em = EMF.createEntityManager();
-        
+        Monkey monkey;
         em.getTransaction().begin();
         StringBuilder builder = new StringBuilder("SELECT * FROM MONKEY WHERE ");
         builder.append("USERNAME=").append("\'").append(username).append("\'")
                 .append(" AND PASSWORD=").append("\'").append(password).append("\'");
         
         try{
-            Monkey monkey = (Monkey) em.createNativeQuery(builder.toString(), Monkey.class).getSingleResult();
+            monkey = (Monkey) em.createNativeQuery(builder.toString(), Monkey.class).getSingleResult();
         } catch(NoResultException inc){
             JLabel info = (JLabel) fields.get("information_label");
             info.setText("Login details incorrect.");
@@ -56,6 +57,7 @@ public class LoginCommand extends Command {
         }
         
         em.close();
+        return monkey;
     }
     
 }
