@@ -1,4 +1,7 @@
-/dist/
-/build/
-/nbproject/
+dist/
+build/
+nbproject/private/
 /src/tests/
+
+*.class
+*.jar
