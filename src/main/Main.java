@@ -20,6 +20,8 @@ import ui.LoginWindow;
  *
  * @author tan
  */
+
+//Break away to beat the odds.
 public class Main {
     private static Database inventory;
     
