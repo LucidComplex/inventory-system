@@ -125,5 +125,7 @@ public class Database {
         defaultCategory.setDescription("");
         defaultCategory.setParentcategory(null);
         defaultCategory.commit();
+        defaultCategory.setParentcategory(defaultCategory);
+        defaultCategory.update();
     }
 }
