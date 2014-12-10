@@ -100,23 +100,23 @@ public class Database {
     }
     
     private void addDefault(){
-        Monkey root = ModelFactory.createMonkey();
-        Contact rootContact = ModelFactory.createContact();
-        rootContact.setEmail("root@database.com");
-        rootContact.setNumber("1234567890");
-        root.setHead(true);
-        root.setUsername("root");
-        root.setPassword("1234");
-        root.setContact(rootContact);
-        root.commit();
+        Monkey admin = ModelFactory.createMonkey();
+        Contact adminContact = ModelFactory.createContact();
+        adminContact.setEmail("root@database.com");
+        adminContact.setNumber("1234567890");
+        admin.setHead(true);
+        admin.setUsername("administrator");
+        admin.setPassword("admin123");
+        admin.setContact(adminContact);
+        admin.commit();
         
         Monkey defaultUser = ModelFactory.createMonkey();
         Contact defaultContact = ModelFactory.createContact();
         defaultContact.setEmail("default@database.com");
         defaultContact.setNumber("0987654321");
         defaultUser.setHead(false);
-        defaultUser.setUsername("default");
-        defaultUser.setPassword("1234");
+        defaultUser.setUsername("staff");
+        defaultUser.setPassword("asd123");
         defaultUser.setContact(defaultContact);
         defaultUser.commit();
         
