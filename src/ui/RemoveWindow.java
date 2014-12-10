@@ -50,15 +50,18 @@ public class RemoveWindow extends UI {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remove Item");
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         item_label.setText("Item Name:");
 
-        List<Item> itemList = Database.getItemList();
-        removeItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
-        removeItem_combo.addItem(new String("--- SELECT ITEM ---"));
-        for(Item i : itemList)
-        removeItem_combo.addItem(i);
         removeItem_combo.setName("removeItem_combo"); // NOI18N
+        refreshList();
         removeItem_combo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 removeItem_comboItemStateChanged(evt);
@@ -151,9 +154,15 @@ public class RemoveWindow extends UI {
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
     private void removeItem_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_removeItem_comboItemStateChanged
+        if(removeItem_combo.getSelectedItem() instanceof String)
+            return;
         int maxQuantity = ((Item) removeItem_combo.getSelectedItem()).getQuantity();
         quantity_field.setModel(new javax.swing.SpinnerNumberModel(0, 0, maxQuantity, 1));
     }//GEN-LAST:event_removeItem_comboItemStateChanged
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        refreshList();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -207,4 +216,13 @@ public class RemoveWindow extends UI {
         fields.put(removeItem_combo.getName(), removeItem_combo);
         return fields;
     }
+    
+    private void refreshList(){
+        List<Item> itemList = Database.getItemList();
+        removeItem_combo.setModel(new javax.swing.DefaultComboBoxModel());
+        removeItem_combo.addItem("--- SELECT ITEM ---");
+        for(Item i : itemList)
+            removeItem_combo.addItem(i);
+    }
+    
 }
