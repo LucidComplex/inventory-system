@@ -211,6 +211,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="itemSupplier_combo.addItem(new String(&quot;--- SELECT ITEM ---&quot;));&#xa;for(Supplier s : supplierList)&#xa;    itemSupplier_combo.addItem(s);">
               <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="itemSupplier_combo" noResource="true"/>
           </Properties>
           <AuxValues>
@@ -222,6 +223,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="itemCategory_combo.addItem(new String(&quot;--- SELECT CATEGORY ---&quot;));&#xa;for(Category c : categoryList)&#xa;    itemCategory_combo.addItem(c);">
               <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="itemCategory_combo" noResource="true"/>
           </Properties>
           <AuxValues>

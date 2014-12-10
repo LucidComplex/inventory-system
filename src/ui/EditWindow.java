@@ -85,18 +85,17 @@ public class EditWindow extends UI {
         editWindow_panelLayout.setHorizontalGroup(
             editWindow_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editWindow_panelLayout.createSequentialGroup()
-                .addGroup(editWindow_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editWindow_panelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(editSupplier_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editItem_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editCategory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(editWindow_panelLayout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(ok_button)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(editSupplier_button, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(editItem_button, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(editCategory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+            .addGroup(editWindow_panelLayout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(ok_button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editWindow_panelLayout.setVerticalGroup(
             editWindow_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,16 +105,16 @@ public class EditWindow extends UI {
                     .addComponent(editSupplier_button, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editItem_button, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editCategory_button, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(ok_button)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editWindow_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(editWindow_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,10 +126,10 @@ public class EditWindow extends UI {
 
     private void editSupplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupplier_buttonActionPerformed
         this.dispose();
-        if(!edit.isVisible())
-            edit.setVisible(true);
-        edit.setAlwaysOnTop(true);
-        edit.setAlwaysOnTop(false);
+        if(!supplier.isVisible())
+            supplier.setVisible(true);
+        supplier.setAlwaysOnTop(true);
+        supplier.setAlwaysOnTop(false);
     }//GEN-LAST:event_editSupplier_buttonActionPerformed
 
     private void editItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItem_buttonActionPerformed

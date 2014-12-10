@@ -26,7 +26,7 @@ import statics.Executor;
  * @author MiriamMarie
  */
 public class MainWindow extends UI {
-    static UI add, remove, request, edit, viewRequest;
+    static UI add, remove, request, edit, viewRequest, newUser;
     EntityManager em;
     Monkey user;
     /**
@@ -46,6 +46,7 @@ public class MainWindow extends UI {
         edit = new EditWindow();
         request = new RequestWindow();
         viewRequest = new ViewRequestsWindow();
+        newUser = new NewUserWindow();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,10 +67,12 @@ public class MainWindow extends UI {
         exit_button = new javax.swing.JButton();
         search_button = new javax.swing.JButton();
         viewRequests_button = new javax.swing.JButton();
+        newUser_button = new javax.swing.JButton();
         list_panel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         inventory_table = new javax.swing.JTable();
         table_label = new javax.swing.JLabel();
+        logout_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory System");
@@ -138,29 +141,44 @@ public class MainWindow extends UI {
             }
         });
 
+        newUser_button.setText("New User");
+        newUser_button.setToolTipText("");
+        newUser_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newUser_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttons_panelLayout = new javax.swing.GroupLayout(buttons_panel);
         buttons_panel.setLayout(buttons_panelLayout);
         buttons_panelLayout.setHorizontalGroup(
             buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttons_panelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(search_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(buttons_panelLayout.createSequentialGroup()
-                        .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(search_button, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addGroup(buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(search_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(buttons_panelLayout.createSequentialGroup()
+                                .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(search_button, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))))
+                    .addGroup(buttons_panelLayout.createSequentialGroup()
+                        .addGroup(buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(buttons_panelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(newUser_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttons_panelLayout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(exit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(edit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(remove_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(request_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(viewRequests_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(buttons_panelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(exit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(remove_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(request_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewRequests_button, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buttons_panelLayout.setVerticalGroup(
             buttons_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +199,9 @@ public class MainWindow extends UI {
                 .addComponent(edit_button)
                 .addGap(18, 18, 18)
                 .addComponent(viewRequests_button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(newUser_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exit_button)
                 .addGap(20, 20, 20))
         );
@@ -189,7 +209,11 @@ public class MainWindow extends UI {
         if(!user.isHead())
         add_button.setEnabled(false);
         if(!user.isHead())
+        edit_button.setEnabled(false);
+        if(!user.isHead())
         viewRequests_button.setEnabled(false);
+        if(!user.isHead())
+        newUser_button.setEnabled(false);
 
         refreshTable();
         inventory_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -205,6 +229,13 @@ public class MainWindow extends UI {
         table_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         table_label.setText("Items Available");
 
+        logout_button.setText("Logout");
+        logout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout list_panelLayout = new javax.swing.GroupLayout(list_panel);
         list_panel.setLayout(list_panelLayout);
         list_panelLayout.setHorizontalGroup(
@@ -212,13 +243,18 @@ public class MainWindow extends UI {
             .addGroup(list_panelLayout.createSequentialGroup()
                 .addGroup(list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-                    .addComponent(table_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(table_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, list_panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(logout_button)))
                 .addContainerGap())
         );
         list_panelLayout.setVerticalGroup(
             list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, list_panelLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(logout_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(table_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -315,6 +351,20 @@ public class MainWindow extends UI {
         }
     }//GEN-LAST:event_inventory_tableMouseClicked
 
+    private void newUser_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUser_buttonActionPerformed
+        // TODO add your handling code here:
+        if(!newUser.isVisible())
+            newUser.setVisible(true);
+        newUser.setAlwaysOnTop(true);
+        newUser.setAlwaysOnTop(false);
+    }//GEN-LAST:event_newUser_buttonActionPerformed
+
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new LoginWindow().setVisible(true);
+    }//GEN-LAST:event_logout_buttonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_button;
@@ -324,6 +374,8 @@ public class MainWindow extends UI {
     private javax.swing.JTable inventory_table;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel list_panel;
+    private javax.swing.JButton logout_button;
+    private javax.swing.JButton newUser_button;
     private javax.swing.JButton remove_button;
     private javax.swing.JButton request_button;
     private javax.swing.JButton search_button;

@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -92,16 +95,13 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="removeItem_combo">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="removeItem_combo.addItem(new String(&quot;--- SELECT ITEM ---&quot;));&#xa;for(Item i : itemList)&#xa;    removeItem_combo.addItem(i);">
-              <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="removeItem_combo" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="removeItem_comboItemStateChanged"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Item&gt; itemList = Database.getItemList();"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="refreshList();"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="quantity_label">

@@ -131,4 +131,8 @@ public class CommandFactory {
     public static Command createSearchCommand(UI ui){
         return new SearchCommand(ui);
     }
+    
+    public static Command createNewUserCommand(UI ui){
+        return new AddUserCommand(ui);
+    }
 }

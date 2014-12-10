@@ -25,19 +25,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="viewItemDetails_panel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="viewItemDetails_panel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="viewItemDetails_panel">
       <Properties>
-        <Property name="name" type="java.lang.String" value="jPanel1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="viewItemDetails_panel" noResource="true"/>
       </Properties>
 
       <Layout>
@@ -45,7 +45,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="close_button" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="close_button" min="-2" pref="73" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -62,24 +65,26 @@
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="name_details" max="32767" attributes="0"/>
-                              <Component id="jScrollPane1" pref="234" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="name_details" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="234" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="supplier_details" alignment="0" max="32767" attributes="0"/>
                                       <Component id="category_details" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="supplier_button" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="category_button" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="supplier_button" min="-2" max="-2" attributes="0"/>
+                                      <Component id="category_button" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,28 +101,28 @@
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       <Component id="description_label" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="supplier_details" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="supplier_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="supplier_button" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="supplier_label" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="supplier_details" alignment="1" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="supplier_button" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="category_button" min="-2" max="-2" attributes="0"/>
-                      <Component id="category_label" min="-2" max="-2" attributes="0"/>
-                      <Component id="category_details" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="category_label" min="-2" max="-2" attributes="0"/>
+                              <Component id="category_details" min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="category_button" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="close_button" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -199,18 +204,18 @@
             <Property name="name" type="java.lang.String" value="category_details" noResource="true"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="close_button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="name" type="java.lang.String" value="close_button" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="close_buttonActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JButton" name="supplier_button">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="33" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="More..."/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="supplier_button" noResource="true"/>
           </Properties>
           <Events>
@@ -219,29 +224,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="category_button">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="33" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="More..."/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="category_button" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="category_buttonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="close_button">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Close"/>
-            <Property name="name" type="java.lang.String" value="close_button" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="close_buttonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

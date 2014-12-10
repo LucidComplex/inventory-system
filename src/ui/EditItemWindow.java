@@ -231,6 +231,18 @@ public class EditItemWindow extends UI {
         this.dispose();
     }//GEN-LAST:event_cancel_buttonActionPerformed
 
+    private void itemSupplier_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupplier_radiobuttonActionPerformed
+        if(itemSupplier_radiobutton.isSelected())
+            itemSupplier_combo.setEnabled(true);
+        else itemSupplier_combo.setEnabled(false);
+    }//GEN-LAST:event_itemSupplier_radiobuttonActionPerformed
+
+    private void itemCategory_radiobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategory_radiobuttonActionPerformed
+        if(itemCategory_radiobutton.isSelected())
+            itemCategory_combo.setEnabled(true);
+        else itemCategory_combo.setEnabled(false);
+    }//GEN-LAST:event_itemCategory_radiobuttonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel_button;
     private javax.swing.JScrollPane description_scollpane;
