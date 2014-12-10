@@ -5,8 +5,11 @@
  */
 package ui;
 
+import base.Database;
 import base.UI;
+import java.util.List;
 import java.util.Map;
+import models.Item;
 
 /**
  *
@@ -14,17 +17,34 @@ import java.util.Map;
  */
 public class ViewItemDetailsWindow extends UI {
     UI supplier, category;
+    Item selectedItem;
+    
     /**
      * Creates new form ItemDetailsWindow
+     * @param selectedRow the selected row index in the table
      */
-    public ViewItemDetailsWindow() {
+    public ViewItemDetailsWindow(int selectedRow) {
         initComponents();
+        setSelectedItem(selectedRow);
         initWindow();
+        initText();
+    }
+    
+    private void initText(){
+        name_details.setText(selectedItem.getName());
+        description_details.setText(selectedItem.getDescription());
+        supplier_details.setText(selectedItem.getSupplier().getName());
+        category_details.setText(selectedItem.getCategory().getName());
+    }
+    
+    private void setSelectedItem(int selectedRow){
+        List<Item> itemList = Database.getItemList();
+        selectedItem = itemList.get(selectedRow);
     }
     
     private void initWindow(){
-        supplier = new ViewSupplierDetailsWindow();
-        category = new ViewCategoryDetailsWindow();
+        supplier = new ViewSupplierDetailsWindow(selectedItem);
+        category = new ViewCategoryDetailsWindow(selectedItem);
     }
 
     /**
@@ -105,6 +125,11 @@ public class ViewItemDetailsWindow extends UI {
 
         category_button.setText("More...");
         category_button.setName("category_button"); // NOI18N
+        category_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                category_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewItemDetails_panelLayout = new javax.swing.GroupLayout(viewItemDetails_panel);
         viewItemDetails_panel.setLayout(viewItemDetails_panelLayout);
@@ -185,15 +210,25 @@ public class ViewItemDetailsWindow extends UI {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
+        if(!supplier.isVisible())
+            supplier.setVisible(true);
+        supplier.setAlwaysOnTop(true);
+        supplier.setAlwaysOnTop(false);
+    }//GEN-LAST:event_supplier_buttonActionPerformed
+
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_close_buttonActionPerformed
 
-    private void supplier_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplier_buttonActionPerformed
+    private void category_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_category_buttonActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_supplier_buttonActionPerformed
+        if(!category.isVisible())
+            category.setVisible(true);
+        category.setAlwaysOnTop(true);
+        category.setAlwaysOnTop(false);
+    }//GEN-LAST:event_category_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,13 +257,6 @@ public class ViewItemDetailsWindow extends UI {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewItemDetailsWindow().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

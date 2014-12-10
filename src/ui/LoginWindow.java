@@ -32,7 +32,6 @@ public class LoginWindow extends UI {
     }
     
     private void initWindows(){
-        mainWindow = new MainWindow();
     }
 
     /**
@@ -157,7 +156,6 @@ public class LoginWindow extends UI {
             return;
         }
         
-        mainWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_login_buttonActionPerformed
 

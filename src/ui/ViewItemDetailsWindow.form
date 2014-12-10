@@ -227,6 +227,9 @@
             <Property name="text" type="java.lang.String" value="More..."/>
             <Property name="name" type="java.lang.String" value="category_button" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="category_buttonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
